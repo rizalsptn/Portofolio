@@ -25,11 +25,12 @@
     --amber-light: #fdf3e0;
     --blue: #1a3a6b;
     --blue-light: #e6edf8;
+    --purple: #3d1f6e;
+    --purple-light: #ede8f8;
     --border: rgba(0,0,0,0.08);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -43,27 +44,16 @@
   /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(248,247,244,0.92);
+    background: rgba(248,247,244,0.94);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
     padding: 0 5vw;
     display: flex; align-items: center; justify-content: space-between;
     height: 56px;
   }
-  .nav-logo {
-    font-family: 'DM Mono', monospace;
-    font-size: 13px;
-    color: var(--gray-600);
-    letter-spacing: 0.05em;
-  }
-  .nav-links { display: flex; gap: 32px; }
-  .nav-links a {
-    text-decoration: none;
-    font-size: 13px;
-    color: var(--gray-600);
-    letter-spacing: 0.03em;
-    transition: color 0.2s;
-  }
+  .nav-logo { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--gray-600); letter-spacing: 0.05em; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { text-decoration: none; font-size: 13px; color: var(--gray-600); letter-spacing: 0.03em; transition: color 0.2s; }
   .nav-links a:hover { color: var(--black); }
 
   /* HERO */
@@ -71,581 +61,348 @@
     min-height: 100vh;
     display: flex; align-items: center;
     padding: 80px 5vw 60px;
-    position: relative;
-    overflow: hidden;
+    position: relative; overflow: hidden;
   }
   .hero::before {
     content: '';
     position: absolute; top: 0; right: 0;
     width: 40%; height: 100%;
-    background: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 39px,
-      var(--gray-200) 39px,
-      var(--gray-200) 40px
-    );
-    opacity: 0.4;
-    pointer-events: none;
+    background: repeating-linear-gradient(0deg, transparent, transparent 39px, var(--gray-200) 39px, var(--gray-200) 40px);
+    opacity: 0.4; pointer-events: none;
   }
   .hero-content { max-width: 720px; position: relative; }
   .hero-tag {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    color: var(--gray-600);
-    text-transform: uppercase;
-    margin-bottom: 24px;
+    font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.12em;
+    color: var(--gray-600); text-transform: uppercase; margin-bottom: 24px;
     display: flex; align-items: center; gap: 10px;
   }
-  .hero-tag::before {
-    content: '';
-    width: 24px; height: 1px;
-    background: var(--gray-400);
-  }
+  .hero-tag::before { content: ''; width: 24px; height: 1px; background: var(--gray-400); }
   h1 {
     font-family: 'DM Serif Display', serif;
     font-size: clamp(44px, 6vw, 80px);
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    color: var(--black);
-    margin-bottom: 8px;
+    line-height: 1.05; letter-spacing: -0.02em; color: var(--black); margin-bottom: 8px;
   }
-  h1 em {
-    font-style: italic;
-    color: var(--gray-600);
-  }
-  .hero-sub {
-    font-size: 16px;
-    color: var(--gray-600);
-    margin: 20px 0 40px;
-    max-width: 480px;
-    line-height: 1.65;
-  }
-  .hero-stats {
-    display: flex; gap: 40px; margin-bottom: 44px;
-  }
-  .stat-item { }
-  .stat-num {
-    font-family: 'DM Serif Display', serif;
-    font-size: 36px;
-    color: var(--black);
-    line-height: 1;
-  }
-  .stat-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    color: var(--gray-400);
-    text-transform: uppercase;
-    margin-top: 4px;
-  }
+  h1 em { font-style: italic; color: var(--gray-600); }
+  .hero-sub { font-size: 16px; color: var(--gray-600); margin: 20px 0 40px; max-width: 480px; line-height: 1.65; }
+  .hero-stats { display: flex; gap: 40px; margin-bottom: 44px; }
+  .stat-num { font-family: 'DM Serif Display', serif; font-size: 36px; color: var(--black); line-height: 1; }
+  .stat-label { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: var(--gray-400); text-transform: uppercase; margin-top: 4px; }
   .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
   .btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 12px 24px;
-    font-family: 'Syne', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.03em;
-    text-decoration: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.2s;
+    display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px;
+    font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.03em;
+    text-decoration: none; border-radius: 4px; cursor: pointer; transition: all 0.2s;
     border: 1px solid var(--black);
   }
-  .btn-primary {
-    background: var(--black);
-    color: var(--white);
-  }
+  .btn-primary { background: var(--black); color: var(--white); }
   .btn-primary:hover { background: var(--gray-800); }
-  .btn-outline {
-    background: transparent;
-    color: var(--black);
-  }
+  .btn-outline { background: transparent; color: var(--black); }
   .btn-outline:hover { background: var(--gray-100); }
 
   /* SECTION */
   section { padding: 80px 5vw; }
-  .section-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    color: var(--gray-400);
-    text-transform: uppercase;
-    margin-bottom: 12px;
-  }
-  h2 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(28px, 3.5vw, 44px);
-    color: var(--black);
-    line-height: 1.1;
-    margin-bottom: 40px;
-  }
+  .section-label { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.12em; color: var(--gray-400); text-transform: uppercase; margin-bottom: 12px; }
+  h2 { font-family: 'DM Serif Display', serif; font-size: clamp(28px, 3.5vw, 44px); color: var(--black); line-height: 1.1; margin-bottom: 40px; }
   .divider { border: none; border-top: 1px solid var(--border); margin: 0 5vw; }
 
   /* ABOUT */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: start;
-  }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
   .about-text p { color: var(--gray-800); line-height: 1.8; margin-bottom: 16px; }
-  .tools-grid {
-    display: flex; flex-wrap: wrap; gap: 8px;
-  }
+  .tools-grid { display: flex; flex-wrap: wrap; gap: 8px; }
   .tool-tag {
-    padding: 6px 14px;
-    background: var(--gray-100);
-    border: 1px solid var(--gray-200);
-    border-radius: 2px;
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    color: var(--gray-800);
+    padding: 6px 14px; background: var(--gray-100); border: 1px solid var(--gray-200);
+    border-radius: 2px; font-family: 'DM Mono', monospace; font-size: 12px; color: var(--gray-800);
   }
-  .tool-tag.highlight {
-    background: var(--black);
-    border-color: var(--black);
-    color: var(--white);
+  .tool-tag.highlight { background: var(--black); border-color: var(--black); color: var(--white); }
+  .skills-section h3 { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: var(--gray-400); text-transform: uppercase; margin-bottom: 16px; }
+  .skill-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+  .skill-name { font-size: 13px; color: var(--gray-800); }
+  .skill-pct { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gray-400); }
+  .progress-bar { width: 100%; height: 3px; background: var(--gray-200); border-radius: 2px; margin-top: 8px; overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--black); border-radius: 2px; transition: width 1s ease; }
+
+  /* QA WORKFLOW */
+  .workflow-section { background: var(--black); color: var(--white); padding: 80px 5vw; }
+  .workflow-section .section-label { color: rgba(255,255,255,0.4); }
+  .workflow-section h2 { color: var(--white); }
+  .workflow-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0; position: relative; }
+  .workflow-steps::before {
+    content: '';
+    position: absolute; top: 28px; left: 0; right: 0; height: 1px;
+    background: rgba(255,255,255,0.12);
   }
-  .about-right { }
-  .skills-section h3 {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    color: var(--gray-400);
-    text-transform: uppercase;
-    margin-bottom: 16px;
+  .workflow-step { padding: 0 20px 32px; position: relative; cursor: pointer; }
+  .workflow-step:first-child { padding-left: 0; }
+  .step-num {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Mono', monospace; font-size: 13px; color: rgba(255,255,255,0.5);
+    margin-bottom: 20px; position: relative; z-index: 1; transition: all 0.3s;
+  }
+  .workflow-step.active .step-num,
+  .workflow-step:hover .step-num {
+    background: var(--white); color: var(--black);
+    border-color: var(--white);
+  }
+  .step-title { font-weight: 600; font-size: 14px; color: var(--white); margin-bottom: 6px; }
+  .step-desc { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+  .step-badge {
+    display: inline-block; margin-top: 10px;
+    padding: 3px 10px; border-radius: 2px;
+    font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.06em;
+    background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.4);
+  }
+  .step-badge.tool { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.7); }
+
+  .workflow-detail-box {
+    margin-top: 48px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px; padding: 24px 28px;
+    display: none;
+  }
+  .workflow-detail-box.active { display: block; }
+  .wdb-title { font-family: 'DM Mono', monospace; font-size: 11px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
+  .wdb-content { font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.7; }
+  .wdb-list { list-style: none; }
+  .wdb-list li { padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 13px; color: rgba(255,255,255,0.65); display: flex; gap: 10px; }
+  .wdb-list li:last-child { border-bottom: none; }
+  .wdb-list li::before { content: '→'; color: rgba(255,255,255,0.25); font-family: 'DM Mono', monospace; flex-shrink: 0; }
+
+  /* PROJECTS */
+  .project-card {
+    border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin-bottom: 20px;
+  }
+  .project-header {
+    padding: 20px 24px; background: var(--gray-100);
+    display: flex; align-items: center; justify-content: space-between;
+    cursor: pointer; user-select: none;
+  }
+  .project-header:hover { background: var(--gray-200); }
+  .project-header-left { display: flex; align-items: center; gap: 16px; }
+  .project-icon {
+    width: 44px; height: 44px; border-radius: 6px;
+    background: var(--black); color: var(--white);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.04em; flex-shrink: 0;
+  }
+  .project-name { font-weight: 600; font-size: 16px; color: var(--black); margin-bottom: 2px; }
+  .project-meta { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gray-400); }
+  .project-badges { display: flex; gap: 6px; align-items: center; }
+  .expand-icon { transition: transform 0.2s; font-size: 16px; color: var(--gray-400); }
+  .expand-icon.open { transform: rotate(180deg); }
+
+  .project-body { display: none; padding: 28px 24px; background: var(--white); }
+  .project-body.open { display: block; }
+
+  .scope-tabs { display: flex; gap: 0; border-bottom: 1px solid var(--gray-200); margin-bottom: 28px; }
+  .scope-tab {
+    padding: 10px 20px; background: none; border: none;
+    border-bottom: 2px solid transparent; font-family: 'Syne', sans-serif;
+    font-size: 13px; font-weight: 500; color: var(--gray-400); cursor: pointer;
+    transition: all 0.2s; margin-bottom: -1px;
+  }
+  .scope-tab.active { color: var(--black); border-bottom-color: var(--black); }
+  .scope-panel { display: none; }
+  .scope-panel.active { display: block; }
+
+  .scope-overview {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 28px;
+  }
+  .scope-stat {
+    background: var(--gray-100); border-radius: 6px; padding: 16px;
+  }
+  .scope-stat-num { font-family: 'DM Serif Display', serif; font-size: 28px; color: var(--black); }
+  .scope-stat-label { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 2px; }
+
+  .feature-list { list-style: none; }
+  .feature-list li {
+    padding: 10px 0; border-bottom: 1px dashed var(--gray-200);
+    font-size: 14px; color: var(--gray-800); display: flex; gap: 10px; align-items: flex-start;
+  }
+  .feature-list li:last-child { border-bottom: none; }
+  .feature-list li::before { content: '→'; font-family: 'DM Mono', monospace; color: var(--gray-400); flex-shrink: 0; margin-top: 1px; }
+
+  .role-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .role-pill {
+    padding: 6px 14px; border-radius: 20px; font-family: 'DM Mono', monospace; font-size: 11px;
+    letter-spacing: 0.04em; font-weight: 500;
+  }
+  .role-web { background: var(--blue-light); color: var(--blue); }
+  .role-mobile { background: var(--green-light); color: var(--green); }
+  .role-admin { background: var(--amber-light); color: var(--amber); }
+
+  .section-divider-label {
+    font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gray-400);
+    text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; margin-top: 24px;
   }
 
-  /* EXPERIENCE */
-  .exp-item {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 40px;
-    padding: 40px 0;
-    border-bottom: 1px solid var(--border);
-  }
-  .exp-item:last-child { border-bottom: none; }
-  .exp-meta { }
-  .exp-company {
-    font-weight: 600;
-    font-size: 14px;
-    color: var(--black);
-    margin-bottom: 4px;
-  }
-  .exp-period {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--gray-400);
-    letter-spacing: 0.05em;
-  }
-  .exp-role {
-    font-family: 'DM Serif Display', serif;
-    font-size: 22px;
-    color: var(--black);
-    margin-bottom: 12px;
-    line-height: 1.2;
-  }
-  .exp-desc { color: var(--gray-600); line-height: 1.7; margin-bottom: 16px; }
-  .exp-highlights { list-style: none; }
-  .exp-highlights li {
-    padding: 8px 0;
-    border-bottom: 1px dashed var(--gray-200);
-    color: var(--gray-800);
-    font-size: 14px;
-    line-height: 1.6;
-    display: flex; gap: 12px; align-items: flex-start;
-  }
-  .exp-highlights li:last-child { border-bottom: none; }
-  .exp-highlights li::before {
-    content: '→';
-    font-family: 'DM Mono', monospace;
-    color: var(--gray-400);
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-
-  /* PORTFOLIO SECTION */
-  .portfolio-tabs {
-    display: flex; gap: 0;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 40px;
-  }
-  .tab-btn {
-    padding: 12px 24px;
-    background: none;
-    border: none;
-    border-bottom: 2px solid transparent;
-    font-family: 'Syne', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--gray-400);
-    cursor: pointer;
-    transition: all 0.2s;
-    margin-bottom: -1px;
-  }
-  .tab-btn.active {
-    color: var(--black);
-    border-bottom-color: var(--black);
-  }
-  .tab-btn:hover:not(.active) { color: var(--gray-600); }
-  .tab-panel { display: none; }
-  .tab-panel.active { display: block; }
-
-  /* TEST CASE TABLE */
-  .table-wrapper {
-    overflow-x: auto;
-    border: 1px solid var(--gray-200);
-    border-radius: 6px;
-  }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13px;
-  }
-  thead {
-    background: var(--gray-100);
-  }
-  thead th {
-    padding: 12px 16px;
-    text-align: left;
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--gray-600);
-    font-weight: 500;
-    border-bottom: 1px solid var(--gray-200);
-    white-space: nowrap;
-  }
-  tbody tr {
-    border-bottom: 1px solid var(--gray-200);
-    transition: background 0.15s;
-    cursor: pointer;
-  }
-  tbody tr:hover { background: var(--accent-light); }
-  tbody tr:last-child { border-bottom: none; }
-  td {
-    padding: 12px 16px;
-    color: var(--gray-800);
-    vertical-align: top;
-    line-height: 1.5;
-  }
-  .tc-id {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--gray-400);
-    white-space: nowrap;
-  }
+  /* BUG REPORT */
   .badge {
-    display: inline-block;
-    padding: 3px 10px;
-    border-radius: 2px;
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.04em;
-    font-weight: 500;
-    white-space: nowrap;
+    display: inline-block; padding: 3px 10px; border-radius: 2px;
+    font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.04em; font-weight: 500; white-space: nowrap;
   }
   .badge-pass { background: var(--green-light); color: var(--green); }
   .badge-fail { background: var(--red-light); color: var(--red); }
   .badge-critical { background: var(--red-light); color: var(--red); }
   .badge-major { background: var(--amber-light); color: var(--amber); }
-  .badge-minor { background: var(--blue-light); color: var(--blue); }
   .badge-blocking { background: #1a1a1a; color: #f8f7f4; }
   .badge-info { background: var(--gray-100); color: var(--gray-600); }
   .badge-high { background: var(--red-light); color: var(--red); }
   .badge-medium { background: var(--amber-light); color: var(--amber); }
   .badge-low { background: var(--blue-light); color: var(--blue); }
+  .badge-web { background: var(--blue-light); color: var(--blue); }
+  .badge-mobile { background: var(--green-light); color: var(--green); }
 
-  /* BUG REPORT */
-  .bug-card {
-    border: 1px solid var(--gray-200);
-    border-radius: 6px;
-    overflow: hidden;
-    margin-bottom: 16px;
+  /* TABLE */
+  .table-wrapper { overflow-x: auto; border: 1px solid var(--gray-200); border-radius: 6px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--gray-100); }
+  thead th {
+    padding: 12px 16px; text-align: left; font-family: 'DM Mono', monospace; font-size: 11px;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-600); font-weight: 500;
+    border-bottom: 1px solid var(--gray-200); white-space: nowrap;
   }
-  .bug-header {
-    padding: 16px 20px;
-    background: var(--gray-100);
-    display: flex; align-items: center; justify-content: space-between;
-    cursor: pointer;
-    user-select: none;
-  }
-  .bug-header:hover { background: var(--gray-200); }
-  .bug-title-row { display: flex; align-items: center; gap: 12px; }
-  .bug-id {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--gray-400);
-  }
-  .bug-title { font-weight: 500; font-size: 14px; }
-  .bug-badges { display: flex; gap: 6px; }
-  .bug-body {
-    display: none;
-    padding: 20px;
-    background: var(--white);
-  }
-  .bug-body.open { display: block; }
-  .bug-field { margin-bottom: 16px; }
-  .bug-field-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--gray-400);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 6px;
-  }
-  .bug-field-value {
-    font-size: 13px;
-    color: var(--gray-800);
-    line-height: 1.6;
-  }
-  .bug-steps {
-    list-style: decimal;
-    padding-left: 18px;
-    font-size: 13px;
-    color: var(--gray-800);
-    line-height: 1.8;
-  }
-  .bug-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  tbody tr { border-bottom: 1px solid var(--gray-200); transition: background 0.15s; }
+  tbody tr:hover { background: var(--accent-light); }
+  tbody tr:last-child { border-bottom: none; }
+  td { padding: 12px 16px; color: var(--gray-800); vertical-align: top; line-height: 1.5; }
+  .tc-id { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gray-400); white-space: nowrap; }
 
-  /* DB VALIDATION */
-  .db-card {
-    background: var(--gray-800);
-    color: var(--white);
-    border-radius: 6px;
-    overflow: hidden;
-    margin-bottom: 20px;
-  }
-  .db-card-header {
-    padding: 14px 20px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    display: flex; align-items: center; justify-content: space-between;
-  }
+  /* API */
+  .api-method { display: inline-block; padding: 2px 8px; border-radius: 2px; font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; }
+  .method-get { background: var(--green-light); color: var(--green); }
+  .method-post { background: var(--blue-light); color: var(--blue); }
+  .method-put { background: var(--amber-light); color: var(--amber); }
+  .method-delete { background: var(--red-light); color: var(--red); }
+  .api-endpoint { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--gray-600); }
+
+  /* DB */
+  .db-card { background: var(--gray-800); color: var(--white); border-radius: 6px; overflow: hidden; margin-bottom: 20px; }
+  .db-card-header { padding: 14px 20px; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: space-between; }
   .db-card-title { font-size: 13px; font-weight: 500; }
-  .db-card-badge {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    padding: 3px 10px;
-    border-radius: 2px;
-    background: rgba(255,255,255,0.1);
-    color: rgba(255,255,255,0.7);
-  }
-  .db-code {
-    padding: 16px 20px;
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    line-height: 1.7;
-    color: #a8c4e0;
-    overflow-x: auto;
-    white-space: pre;
-  }
+  .db-card-badge { font-family: 'DM Mono', monospace; font-size: 11px; padding: 3px 10px; border-radius: 2px; background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); }
+  .db-code { padding: 16px 20px; font-family: 'DM Mono', monospace; font-size: 12px; line-height: 1.7; color: #a8c4e0; overflow-x: auto; white-space: pre; }
   .db-code .key { color: #79b8ff; }
   .db-code .str { color: #9ecbff; }
   .db-code .num { color: #f8c555; }
   .db-code .comment { color: #6a737d; font-style: italic; }
 
-  .validation-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
-    margin-bottom: 20px;
-  }
-  .validation-box {
-    border: 1px solid var(--gray-200);
-    border-radius: 6px;
-    overflow: hidden;
-  }
-  .validation-box-header {
-    padding: 10px 16px;
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--gray-400);
-    background: var(--gray-100);
-    border-bottom: 1px solid var(--gray-200);
-  }
+  .validation-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+  .validation-box { border: 1px solid var(--gray-200); border-radius: 6px; overflow: hidden; }
+  .validation-box-header { padding: 10px 16px; font-family: 'DM Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-400); background: var(--gray-100); border-bottom: 1px solid var(--gray-200); }
   .validation-box-body { padding: 14px 16px; }
-  .validation-result {
-    display: flex; align-items: center; gap: 8px;
-    font-size: 13px; color: var(--gray-800);
-    padding: 6px 0;
-    border-bottom: 1px dashed var(--gray-200);
-  }
+  .validation-result { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--gray-800); padding: 6px 0; border-bottom: 1px dashed var(--gray-200); }
   .validation-result:last-child { border-bottom: none; }
   .dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
   .dot-pass { background: var(--green); }
   .dot-fail { background: var(--red); }
 
-  /* API SECTION */
-  .api-method {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 2px;
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    font-weight: 500;
-  }
-  .method-get { background: var(--green-light); color: var(--green); }
-  .method-post { background: var(--blue-light); color: var(--blue); }
-  .method-put { background: var(--amber-light); color: var(--amber); }
-  .method-delete { background: var(--red-light); color: var(--red); }
-  .api-endpoint {
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    color: var(--gray-600);
-  }
+  .db-finding { background: var(--accent-light); border-left: 3px solid var(--black); padding: 14px 16px; border-radius: 0 4px 4px 0; margin: 16px 0; }
+  .db-finding-label { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+  .db-finding p { font-size: 13px; color: var(--gray-800); line-height: 1.6; }
 
-  /* FILTER BAR */
-  .filter-bar {
-    display: flex; align-items: center; gap: 10px;
-    margin-bottom: 20px; flex-wrap: wrap;
+  /* EXPERIENCE */
+  .exp-item { display: grid; grid-template-columns: 200px 1fr; gap: 40px; padding: 40px 0; border-bottom: 1px solid var(--border); }
+  .exp-item:last-child { border-bottom: none; }
+  .exp-company { font-weight: 600; font-size: 14px; color: var(--black); margin-bottom: 4px; }
+  .exp-period { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gray-400); letter-spacing: 0.05em; }
+  .exp-role { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--black); margin-bottom: 12px; line-height: 1.2; }
+  .exp-desc { color: var(--gray-600); line-height: 1.7; margin-bottom: 16px; }
+  .exp-highlights { list-style: none; }
+  .exp-highlights li { padding: 8px 0; border-bottom: 1px dashed var(--gray-200); color: var(--gray-800); font-size: 14px; line-height: 1.6; display: flex; gap: 12px; align-items: flex-start; }
+  .exp-highlights li:last-child { border-bottom: none; }
+  .exp-highlights li::before { content: '→'; font-family: 'DM Mono', monospace; color: var(--gray-400); flex-shrink: 0; margin-top: 2px; }
+
+  /* CERTIFICATES */
+  .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+  .cert-card {
+    border: 1px solid var(--gray-200); border-radius: 8px; padding: 20px 22px;
+    display: flex; gap: 16px; align-items: flex-start;
+    transition: border-color 0.2s; cursor: pointer;
   }
-  .filter-btn {
-    padding: 6px 14px;
-    border: 1px solid var(--gray-200);
-    background: none;
-    border-radius: 2px;
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.05em;
-    color: var(--gray-600);
-    cursor: pointer;
-    transition: all 0.15s;
+  .cert-card:hover { border-color: var(--gray-400); }
+  .cert-card.placeholder {
+    border-style: dashed; background: transparent;
+    cursor: default;
   }
-  .filter-btn.active, .filter-btn:hover {
-    background: var(--black); color: var(--white); border-color: var(--black);
+  .cert-card.placeholder:hover { border-color: var(--gray-200); }
+  .cert-icon {
+    width: 40px; height: 40px; border-radius: 6px; flex-shrink: 0;
+    background: var(--gray-100); border: 1px solid var(--gray-200);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Mono', monospace; font-size: 14px; color: var(--gray-400);
   }
-  .search-input {
-    padding: 6px 14px;
-    border: 1px solid var(--gray-200);
-    border-radius: 2px;
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    color: var(--black);
-    background: var(--white);
-    outline: none;
-    transition: border 0.2s;
-    min-width: 200px;
-  }
-  .search-input:focus { border-color: var(--black); }
+  .cert-icon.filled { background: var(--black); color: var(--white); border-color: var(--black); }
+  .cert-name { font-weight: 500; font-size: 14px; color: var(--black); margin-bottom: 3px; }
+  .cert-issuer { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gray-400); margin-bottom: 6px; }
+  .cert-date { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gray-400); }
+  .cert-card.placeholder .cert-name { color: var(--gray-400); }
+  .cert-placeholder-note { font-size: 12px; color: var(--gray-400); margin-top: 4px; }
 
   /* CONTACT */
-  .contact-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
-  }
-  .contact-info { }
-  .contact-item {
-    display: flex; align-items: center; gap: 14px;
-    padding: 16px 0;
-    border-bottom: 1px solid var(--border);
-    text-decoration: none;
-    color: var(--black);
-    transition: gap 0.2s;
-  }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .contact-item { display: flex; align-items: center; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--border); text-decoration: none; color: var(--black); transition: gap 0.2s; }
   .contact-item:hover { gap: 20px; }
-  .contact-icon {
-    width: 36px; height: 36px;
-    background: var(--gray-100);
-    border-radius: 4px;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'DM Mono', monospace;
-    font-size: 14px;
-    color: var(--gray-600);
-    flex-shrink: 0;
-  }
+  .contact-icon { width: 36px; height: 36px; background: var(--gray-100); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; font-size: 14px; color: var(--gray-600); flex-shrink: 0; }
   .contact-label { font-size: 11px; font-family: 'DM Mono', monospace; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.08em; }
   .contact-value { font-size: 14px; color: var(--black); }
   .contact-arrow { margin-left: auto; color: var(--gray-400); font-size: 18px; }
 
   /* FOOTER */
-  footer {
-    padding: 32px 5vw;
-    border-top: 1px solid var(--border);
-    display: flex; justify-content: space-between; align-items: center;
-  }
-  footer p {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--gray-400);
-    letter-spacing: 0.05em;
-  }
-
-  /* RESPONSIVE */
-  @media (max-width: 768px) {
-    .about-grid, .contact-grid, .validation-grid { grid-template-columns: 1fr; gap: 32px; }
-    .exp-item { grid-template-columns: 1fr; gap: 12px; }
-    .hero-stats { gap: 24px; }
-    nav { padding: 0 4vw; }
-    .nav-links { gap: 20px; }
-  }
+  footer { padding: 32px 5vw; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  footer p { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gray-400); letter-spacing: 0.05em; }
 
   /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .hero-content > * {
-    animation: fadeUp 0.6s ease forwards;
-    opacity: 0;
-  }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-content > * { animation: fadeUp 0.6s ease forwards; opacity: 0; }
   .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
   .hero-content > *:nth-child(2) { animation-delay: 0.2s; }
   .hero-content > *:nth-child(3) { animation-delay: 0.3s; }
   .hero-content > *:nth-child(4) { animation-delay: 0.4s; }
   .hero-content > *:nth-child(5) { animation-delay: 0.5s; }
 
-  .expand-icon { transition: transform 0.2s; font-size: 16px; color: var(--gray-400); }
-  .expand-icon.open { transform: rotate(180deg); }
+  /* BUG CARD */
+  .bug-card { border: 1px solid var(--gray-200); border-radius: 6px; overflow: hidden; margin-bottom: 16px; }
+  .bug-header { padding: 16px 20px; background: var(--gray-100); display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none; }
+  .bug-header:hover { background: var(--gray-200); }
+  .bug-title-row { display: flex; align-items: center; gap: 12px; }
+  .bug-id { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gray-400); }
+  .bug-title { font-weight: 500; font-size: 14px; }
+  .bug-badges { display: flex; gap: 6px; }
+  .bug-body { display: none; padding: 20px; background: var(--white); }
+  .bug-body.open { display: block; }
+  .bug-field { margin-bottom: 16px; }
+  .bug-field-label { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+  .bug-field-value { font-size: 13px; color: var(--gray-800); line-height: 1.6; }
+  .bug-steps { list-style: decimal; padding-left: 18px; font-size: 13px; color: var(--gray-800); line-height: 1.8; }
+  .bug-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
+  /* FILTER */
+  .filter-bar { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+  .filter-btn { padding: 6px 14px; border: 1px solid var(--gray-200); background: none; border-radius: 2px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.05em; color: var(--gray-600); cursor: pointer; transition: all 0.15s; }
+  .filter-btn.active, .filter-btn:hover { background: var(--black); color: var(--white); border-color: var(--black); }
+  .search-input { padding: 6px 14px; border: 1px solid var(--gray-200); border-radius: 2px; font-family: 'DM Mono', monospace; font-size: 12px; color: var(--black); background: var(--white); outline: none; transition: border 0.2s; min-width: 200px; }
+  .search-input:focus { border-color: var(--black); }
+
+  /* SHOW MORE */
   .hidden-row { display: none; }
-  .show-more-btn {
-    width: 100%;
-    padding: 12px;
-    background: var(--gray-100);
-    border: none;
-    border-top: 1px solid var(--gray-200);
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    color: var(--gray-600);
-    cursor: pointer;
-    transition: background 0.15s;
-  }
+  .show-more-btn { width: 100%; padding: 12px; background: var(--gray-100); border: none; border-top: 1px solid var(--gray-200); font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: var(--gray-600); cursor: pointer; transition: background 0.15s; }
   .show-more-btn:hover { background: var(--gray-200); }
 
-  .progress-bar {
-    width: 100%;
-    height: 3px;
-    background: var(--gray-200);
-    border-radius: 2px;
-    margin-top: 8px;
-    overflow: hidden;
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .about-grid, .contact-grid, .validation-grid, .scope-overview { grid-template-columns: 1fr; gap: 24px; }
+    .exp-item { grid-template-columns: 1fr; gap: 12px; }
+    .hero-stats { gap: 24px; }
+    nav { padding: 0 4vw; }
+    .nav-links { gap: 18px; }
+    .workflow-steps { grid-template-columns: 1fr 1fr; }
+    .workflow-steps::before { display: none; }
+    .bug-grid { grid-template-columns: 1fr; }
   }
-  .progress-fill {
-    height: 100%;
-    background: var(--black);
-    border-radius: 2px;
-    transition: width 1s ease;
-  }
-  .skill-row {
-    display: flex; justify-content: space-between; align-items: center;
-    margin-bottom: 4px;
-  }
-  .skill-name { font-size: 13px; color: var(--gray-800); }
-  .skill-pct { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gray-400); }
-
-  .db-finding {
-    background: var(--accent-light);
-    border-left: 3px solid var(--black);
-    padding: 14px 16px;
-    border-radius: 0 4px 4px 0;
-    margin: 16px 0;
-  }
-  .db-finding-label { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
-  .db-finding p { font-size: 13px; color: var(--gray-800); line-height: 1.6; }
 </style>
 </head>
 <body>
@@ -654,8 +411,9 @@
   <span class="nav-logo">MRS / QA</span>
   <div class="nav-links">
     <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#portfolio">Portfolio</a>
+    <a href="#workflow">Workflow</a>
+    <a href="#projects">Projects</a>
+    <a href="#certificates">Certs</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
@@ -665,7 +423,7 @@
   <div class="hero-content">
     <div class="hero-tag">Quality Assurance Engineer</div>
     <h1>Muhamad<br>Rizal <em>Septian</em></h1>
-    <p class="hero-sub">Manual Testing specialist pada platform Web & Mobile — Omni Channel domain. Berpengalaman end-to-end testing, API validation, dan DB verification via MongoDB.</p>
+    <p class="hero-sub">Manual Testing specialist pada platform Web & Mobile — Omni Channel domain. End-to-end testing, API validation, dan DB verification via MongoDB Compass.</p>
     <div class="hero-stats">
       <div class="stat-item">
         <div class="stat-num">100+</div>
@@ -673,15 +431,15 @@
       </div>
       <div class="stat-item">
         <div class="stat-num">15</div>
-        <div class="stat-label">Sprint Completed</div>
+        <div class="stat-label">Sprint Selesai</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num">5</div>
-        <div class="stat-label">Role Tested</div>
+        <div class="stat-num">7000+</div>
+        <div class="stat-label">Pengguna Produk</div>
       </div>
     </div>
     <div class="hero-cta">
-      <a href="#portfolio" class="btn btn-primary">Lihat Portfolio →</a>
+      <a href="#projects" class="btn btn-primary">Lihat Projects →</a>
       <a href="mailto:rzllsptnn19@gmail.com" class="btn btn-outline">Hubungi Saya</a>
     </div>
   </div>
@@ -697,30 +455,30 @@
       <h2>Background &<br>Expertise</h2>
       <p>Junior QA Engineer dengan spesialisasi pengujian manual pada platform Web dan Mobile dalam lingkungan Agile Sprint. Terbiasa mentransformasi PRD menjadi Acceptance Criteria dan test case yang komprehensif.</p>
       <p>Berpengalaman dalam Regression Testing, API Testing via Postman, serta verifikasi data langsung di level database menggunakan MongoDB Compass — memastikan konsistensi antara UI dan backend.</p>
-      <p>Saat ini bekerja di <strong>Lincah Cipta Harapan</strong> pada produk <strong>SatuInbox</strong>, platform Omni Channel yang menangani multi-role dan multi-platform testing.</p>
+      <p>Saat ini bekerja di <strong>Lincah Cipta Harapan</strong> pada produk <strong>SatuInbox</strong>, platform Omni Channel yang digunakan lebih dari <strong>7.000 pengguna</strong> — menangani multi-role dan multi-platform testing setiap sprint.</p>
     </div>
-    <div class="about-right">
+    <div>
       <div class="skills-section" style="margin-bottom: 32px;">
         <h3>Core Skills</h3>
         <div style="margin-bottom: 14px;">
           <div class="skill-row"><span class="skill-name">Manual Testing (Web & Mobile)</span><span class="skill-pct">90%</span></div>
-          <div class="progress-bar"><div class="progress-fill" style="width: 0" data-width="90%"></div></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:0" data-width="90%"></div></div>
         </div>
         <div style="margin-bottom: 14px;">
           <div class="skill-row"><span class="skill-name">Test Case Design & Bug Reporting</span><span class="skill-pct">88%</span></div>
-          <div class="progress-bar"><div class="progress-fill" style="width: 0" data-width="88%"></div></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:0" data-width="88%"></div></div>
+        </div>
+        <div style="margin-bottom: 14px;">
+          <div class="skill-row"><span class="skill-name">Regression Testing</span><span class="skill-pct">85%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:0" data-width="85%"></div></div>
         </div>
         <div style="margin-bottom: 14px;">
           <div class="skill-row"><span class="skill-name">API Testing (Postman)</span><span class="skill-pct">78%</span></div>
-          <div class="progress-bar"><div class="progress-fill" style="width: 0" data-width="78%"></div></div>
-        </div>
-        <div style="margin-bottom: 14px;">
-          <div class="skill-row"><span class="skill-name">DB Validation (MongoDB)</span><span class="skill-pct">72%</span></div>
-          <div class="progress-bar"><div class="progress-fill" style="width: 0" data-width="72%"></div></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:0" data-width="78%"></div></div>
         </div>
         <div>
-          <div class="skill-row"><span class="skill-name">Regression Testing</span><span class="skill-pct">85%</span></div>
-          <div class="progress-bar"><div class="progress-fill" style="width: 0" data-width="85%"></div></div>
+          <div class="skill-row"><span class="skill-name">DB Validation (MongoDB)</span><span class="skill-pct">72%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:0" data-width="72%"></div></div>
         </div>
       </div>
       <div class="skills-section">
@@ -728,11 +486,11 @@
         <div class="tools-grid">
           <span class="tool-tag highlight">Postman</span>
           <span class="tool-tag highlight">MongoDB Compass</span>
+          <span class="tool-tag highlight">Figma</span>
           <span class="tool-tag">OpenProject</span>
           <span class="tool-tag">Jam.dev</span>
           <span class="tool-tag">BetterBugs</span>
           <span class="tool-tag">scrcpy</span>
-          <span class="tool-tag">Figma</span>
           <span class="tool-tag">Git</span>
           <span class="tool-tag">ClickUp</span>
           <span class="tool-tag">MS Excel</span>
@@ -753,20 +511,19 @@
     <div class="exp-meta">
       <div class="exp-company">Lincah Cipta Harapan</div>
       <div class="exp-period">Nov 2025 — Present</div>
-      <div style="margin-top: 12px;">
-        <span class="badge badge-info">Full-time</span>
-      </div>
+      <div style="margin-top: 12px;"><span class="badge badge-info">Full-time</span></div>
     </div>
-    <div class="exp-detail">
+    <div>
       <div class="exp-role">QA Engineer<br>— SatuInbox</div>
-      <p class="exp-desc">Bertanggung jawab atas end-to-end quality assurance pada produk SatuInbox, platform Omni Channel berbasis Web dan Mobile. Bekerja dalam siklus Agile Sprint 2 mingguan.</p>
+      <p class="exp-desc">End-to-end quality assurance pada produk SatuInbox, platform Omni Channel berbasis Web dan Mobile yang digunakan 7.000+ pengguna. Bekerja dalam siklus Agile Sprint 2 mingguan.</p>
       <ul class="exp-highlights">
         <li>End-to-end manual testing pada fitur Sales berbasis Web & Mobile dengan pengujian multi-role (Admin, SPV, Sales di Web; Admin, Supervisor, Agent, Supervisor Sales, Sales di Mobile)</li>
-        <li>Menjalankan RBAC permission testing — memverifikasi bahwa setiap role hanya memiliki akses sesuai yang didefinisikan di PRD</li>
+        <li>RBAC permission testing — memverifikasi bahwa setiap role hanya memiliki akses sesuai yang didefinisikan di PRD</li>
+        <li>Menyusun Business Flow tiap role dan RBAC matrix langsung di Figma sebagai dokumentasi visual</li>
         <li>Menyusun test case, acceptance criteria, dan dokumentasi UAT berdasarkan PRD sebelum setiap release</li>
         <li>Mengidentifikasi dan melaporkan 100+ bug termasuk critical & blocking issue menggunakan OpenProject, Jam.dev, dan BetterBugs</li>
-        <li>Melakukan API validation via Postman dan verifikasi data di level MongoDB Compass untuk memastikan konsistensi backend-frontend</li>
-        <li>Berhasil menyelesaikan 15 sprint (±30 minggu) dengan zero critical bug lolos ke Production</li>
+        <li>API validation via Postman dan verifikasi data di MongoDB Compass untuk memastikan konsistensi backend-frontend</li>
+        <li>Menyelesaikan 15 sprint (±30 minggu) dengan zero critical bug lolos ke Production</li>
       </ul>
     </div>
   </div>
@@ -775,13 +532,11 @@
     <div class="exp-meta">
       <div class="exp-company">PT Len Railway Systems</div>
       <div class="exp-period">Feb 2025 — Jun 2025</div>
-      <div style="margin-top: 12px;">
-        <span class="badge badge-info">Contract</span>
-      </div>
+      <div style="margin-top: 12px;"><span class="badge badge-info">Contract</span></div>
     </div>
-    <div class="exp-detail">
+    <div>
       <div class="exp-role">Full Stack<br>Developer</div>
-      <p class="exp-desc">Mengembangkan aplikasi Timesheet Karyawan menggunakan Next.js, Elysia.js, dan autentikasi JWT. Pengalaman development ini memperkuat pemahaman Rizal terhadap sistem backend — fondasi kuat untuk QA yang efektif.</p>
+      <p class="exp-desc">Mengembangkan aplikasi Timesheet Karyawan menggunakan Next.js, Elysia.js, dan autentikasi JWT. Pengalaman development ini memperkuat pemahaman terhadap sistem backend — fondasi kuat untuk QA yang efektif.</p>
       <ul class="exp-highlights">
         <li>Merancang database dan mengembangkan fitur end-to-end menggunakan JavaScript stack (Next.js + Elysia.js)</li>
         <li>Menyusun dokumentasi teknis, diagram UML, dan panduan pengguna</li>
@@ -792,552 +547,614 @@
 
 <hr class="divider">
 
-<!-- PORTFOLIO -->
-<section id="portfolio">
-  <div class="section-label">03 — Portfolio</div>
+<!-- QA WORKFLOW -->
+<section class="workflow-section" id="workflow">
+  <div class="section-label">03 — QA Workflow</div>
+  <h2>Proses Testing<br><em style="font-style:italic; color:rgba(255,255,255,0.45)">dari PRD sampai Production</em></h2>
+
+  <div class="workflow-steps" id="workflow-steps">
+    <div class="workflow-step active" onclick="selectStep(0, this)">
+      <div class="step-num">01</div>
+      <div class="step-title">Terima Requirement</div>
+      <div class="step-desc">PRD dari PM dianalisa secara menyeluruh</div>
+      <span class="step-badge tool">PRD / Figma</span>
+    </div>
+    <div class="workflow-step" onclick="selectStep(1, this)">
+      <div class="step-num">02</div>
+      <div class="step-title">Analisa & AC</div>
+      <div class="step-desc">Buat Acceptance Criteria dan Business Flow</div>
+      <span class="step-badge tool">Figma / Docs</span>
+    </div>
+    <div class="workflow-step" onclick="selectStep(2, this)">
+      <div class="step-num">03</div>
+      <div class="step-title">Buat Test Case</div>
+      <div class="step-desc">Susun skenario test per fitur dan role</div>
+      <span class="step-badge tool">Excel / ClickUp</span>
+    </div>
+    <div class="workflow-step" onclick="selectStep(3, this)">
+      <div class="step-num">04</div>
+      <div class="step-title">Testing Dev Env</div>
+      <div class="step-desc">Eksekusi test case di environment dev</div>
+      <span class="step-badge tool">Web + Mobile + Postman</span>
+    </div>
+    <div class="workflow-step" onclick="selectStep(4, this)">
+      <div class="step-num">05</div>
+      <div class="step-title">Report Bug</div>
+      <div class="step-desc">Dokumentasi bug dengan evidence lengkap</div>
+      <span class="step-badge tool">OpenProject / Jam.dev</span>
+    </div>
+    <div class="workflow-step" onclick="selectStep(5, this)">
+      <div class="step-num">06</div>
+      <div class="step-title">Testing Prod Env</div>
+      <div class="step-desc">Validasi di environment production</div>
+      <span class="step-badge tool">Staging → Prod</span>
+    </div>
+    <div class="workflow-step" onclick="selectStep(6, this)">
+      <div class="step-num">07</div>
+      <div class="step-title">Update & Retest</div>
+      <div class="step-desc">Update tiket dan retest setelah fix developer</div>
+      <span class="step-badge tool">OpenProject</span>
+    </div>
+    <div class="workflow-step" onclick="selectStep(7, this)">
+      <div class="step-num">08</div>
+      <div class="step-title">Regression + UAT</div>
+      <div class="step-desc">Validasi akhir + sign-off sebelum release</div>
+      <span class="step-badge tool">Full Scope Testing</span>
+    </div>
+  </div>
+
+  <div id="workflow-details">
+    <div class="workflow-detail-box active" id="wf-0">
+      <div class="wdb-title">Step 01 — Terima Requirement dari PM</div>
+      <div class="wdb-content">PRD diterima dari Product Manager, lalu dianalisa untuk memahami seluruh scope fitur, business rules, dan batasan setiap role. Proses ini menjadi fondasi seluruh aktivitas testing di sprint tersebut.</div>
+      <ul class="wdb-list" style="margin-top: 14px;">
+        <li>Baca PRD secara menyeluruh — identifikasi ambiguitas dan minta klarifikasi ke PM</li>
+        <li>Petakan fitur ke role masing-masing (siapa yang boleh akses apa)</li>
+        <li>Tandai area berisiko tinggi yang butuh perhatian lebih saat testing</li>
+      </ul>
+    </div>
+    <div class="workflow-detail-box" id="wf-1">
+      <div class="wdb-title">Step 02 — Analisa Flow & Buat Acceptance Criteria</div>
+      <div class="wdb-content">Setelah PRD dipahami, langkah berikutnya adalah membuat Acceptance Criteria per fitur dan membuat Business Flow visual di Figma untuk tiap role. RBAC matrix juga disusun di sini.</div>
+      <ul class="wdb-list" style="margin-top: 14px;">
+        <li>Tulis Acceptance Criteria — kondisi yang harus terpenuhi agar fitur dianggap done</li>
+        <li>Buat Business Flow diagram per role di Figma (Admin, Supervisor, Agent, Sales, dst.)</li>
+        <li>Susun RBAC matrix — permission apa saja yang dimiliki tiap role</li>
+        <li>Review bersama developer dan PM sebelum testing dimulai</li>
+      </ul>
+    </div>
+    <div class="workflow-detail-box" id="wf-2">
+      <div class="wdb-title">Step 03 — Buat Test Case</div>
+      <div class="wdb-content">Test case disusun berdasarkan AC dan business flow yang sudah dibuat. Mencakup positive case, negative case, boundary case, dan RBAC testing untuk setiap role.</div>
+      <ul class="wdb-list" style="margin-top: 14px;">
+        <li>Positive test case — alur happy path sesuai requirement</li>
+        <li>Negative test case — input invalid, edge case, dan error handling</li>
+        <li>RBAC test case — verifikasi permission tiap role sesuai PRD</li>
+        <li>API test case — validasi request/response menggunakan Postman</li>
+        <li>DB validation checklist — data apa yang harus dicek di MongoDB</li>
+      </ul>
+    </div>
+    <div class="workflow-detail-box" id="wf-3">
+      <div class="wdb-title">Step 04 — Testing di Development Environment</div>
+      <div class="wdb-content">Eksekusi test case di dev environment. Menggunakan multi-device (Web browser + scrcpy untuk Android) dan multi-role login secara bergantian untuk mengcover semua skenario.</div>
+      <ul class="wdb-list" style="margin-top: 14px;">
+        <li>Web testing — Chrome/browser dengan berbagai role login (Admin, SPV, Sales)</li>
+        <li>Mobile testing — via scrcpy untuk Android, semua 5 role (Admin, Supervisor, SPV Sales, Agent, Sales)</li>
+        <li>API testing via Postman — validasi response, status code, dan payload data</li>
+        <li>DB validation via MongoDB Compass — cek konsistensi data antara UI dan database</li>
+      </ul>
+    </div>
+    <div class="workflow-detail-box" id="wf-4">
+      <div class="wdb-title">Step 05 — Report Bug</div>
+      <div class="wdb-content">Setiap bug yang ditemukan didokumentasikan lengkap dengan steps to reproduce, expected vs actual result, severity, priority, dan evidence (screenshot/video via Jam.dev atau BetterBugs).</div>
+      <ul class="wdb-list" style="margin-top: 14px;">
+        <li>Buat bug report di OpenProject dengan template standar</li>
+        <li>Lampirkan evidence — screenshot atau screen recording via Jam.dev/BetterBugs</li>
+        <li>Tentukan severity (Blocking/Critical/Major/Minor) dan priority (High/Medium/Low)</li>
+        <li>Tag developer yang bertanggung jawab dan set sprint target fix</li>
+        <li>Untuk bug DB — sertakan MongoDB query result sebagai bukti inkonsistensi</li>
+      </ul>
+    </div>
+    <div class="workflow-detail-box" id="wf-5">
+      <div class="wdb-title">Step 06 — Testing di Production Environment</div>
+      <div class="wdb-content">Setelah dev environment clear, testing dilanjutkan di environment staging/production untuk memvalidasi bahwa fitur berjalan dengan benar di kondisi nyata.</div>
+      <ul class="wdb-list" style="margin-top: 14px;">
+        <li>Jalankan ulang test case kritis di staging environment</li>
+        <li>Validasi data production — pastikan tidak ada data corruption</li>
+        <li>Test integrasi dengan channel eksternal (WhatsApp, dll.) di production</li>
+        <li>Smoke test — cek fitur utama berjalan normal setelah deployment</li>
+      </ul>
+    </div>
+    <div class="workflow-detail-box" id="wf-6">
+      <div class="wdb-title">Step 07 — Update Tiket & Retest Bug Fix</div>
+      <div class="wdb-content">Setelah developer melakukan fix, tiket diupdate dan retest dilakukan untuk memverifikasi bahwa bug sudah terselesaikan dan tidak ada regression issue yang muncul.</div>
+      <ul class="wdb-list" style="margin-top: 14px;">
+        <li>Update status tiket di OpenProject setelah developer marking "Fixed"</li>
+        <li>Retest bug sesuai steps to reproduce yang sudah didokumentasikan</li>
+        <li>Jika bug masih ada → reopen tiket dengan evidence baru</li>
+        <li>Jika fix valid → tutup tiket dan tandai "Verified"</li>
+        <li>Quick regression check pada modul yang terdampak oleh fix</li>
+      </ul>
+    </div>
+    <div class="workflow-detail-box" id="wf-7">
+      <div class="wdb-title">Step 08 — Regression Testing & UAT</div>
+      <div class="wdb-content">Tahap akhir sebelum release. Regression testing memastikan fitur lama tidak terdampak oleh perubahan baru. UAT adalah sign-off akhir bahwa produk siap ke production.</div>
+      <ul class="wdb-list" style="margin-top: 14px;">
+        <li>Full regression testing — semua fitur di-test ulang, bukan hanya yang baru</li>
+        <li>Cross-platform regression — Web dan Mobile ditest bersamaan</li>
+        <li>Multi-role regression — semua role diverifikasi tidak ada permission yang berubah</li>
+        <li>UAT documentation — hasil testing didokumentasikan sebagai sign-off release</li>
+        <li>Go/No-Go decision bersama PM dan tim sebelum push ke production</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" style="background: var(--white);">
+  <div class="section-label">04 — Featured Projects</div>
   <h2>Testing Artifacts</h2>
 
-  <div class="portfolio-tabs">
-    <button class="tab-btn active" onclick="switchTab('testcase', this)">Test Cases</button>
-    <button class="tab-btn" onclick="switchTab('bugreport', this)">Bug Reports</button>
-    <button class="tab-btn" onclick="switchTab('dbvalidation', this)">DB Validation</button>
-    <button class="tab-btn" onclick="switchTab('api', this)">API Testing</button>
-  </div>
-
-  <!-- TAB: TEST CASE -->
-  <div id="tab-testcase" class="tab-panel active">
-    <div class="filter-bar">
-      <input type="text" class="search-input" placeholder="Search test case..." oninput="filterTable(this.value)" id="tc-search">
-      <button class="filter-btn active" onclick="filterByStatus('all', this)">All</button>
-      <button class="filter-btn" onclick="filterByStatus('Pass', this)">Pass</button>
-      <button class="filter-btn" onclick="filterByStatus('Fail', this)">Fail</button>
-    </div>
-    <div class="table-wrapper">
-      <table id="tc-table">
-        <thead>
-          <tr>
-            <th>TC ID</th>
-            <th>Modul</th>
-            <th>Test Scenario</th>
-            <th>Role</th>
-            <th>Platform</th>
-            <th>Priority</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody id="tc-body">
-          <tr data-status="Pass">
-            <td class="tc-id">TC-001</td>
-            <td>Login</td>
-            <td>Login dengan kredensial valid sebagai Admin</td>
-            <td><span class="badge badge-info">Admin</span></td>
-            <td>Web</td>
-            <td><span class="badge badge-high">High</span></td>
-            <td><span class="badge badge-pass">Pass</span></td>
-          </tr>
-          <tr data-status="Pass">
-            <td class="tc-id">TC-002</td>
-            <td>Login</td>
-            <td>Login dengan password salah menampilkan error message</td>
-            <td><span class="badge badge-info">All Role</span></td>
-            <td>Web</td>
-            <td><span class="badge badge-high">High</span></td>
-            <td><span class="badge badge-pass">Pass</span></td>
-          </tr>
-          <tr data-status="Fail">
-            <td class="tc-id">TC-003</td>
-            <td>RBAC</td>
-            <td>Sales tidak bisa mengakses menu Report yang hanya untuk SPV</td>
-            <td><span class="badge badge-info">Sales</span></td>
-            <td>Web</td>
-            <td><span class="badge badge-critical">Critical</span></td>
-            <td><span class="badge badge-fail">Fail</span></td>
-          </tr>
-          <tr data-status="Pass">
-            <td class="tc-id">TC-004</td>
-            <td>RBAC</td>
-            <td>SPV dapat melihat semua transaksi di bawah timnya</td>
-            <td><span class="badge badge-info">SPV</span></td>
-            <td>Web</td>
-            <td><span class="badge badge-high">High</span></td>
-            <td><span class="badge badge-pass">Pass</span></td>
-          </tr>
-          <tr data-status="Pass">
-            <td class="tc-id">TC-005</td>
-            <td>Sales Flow</td>
-            <td>Agent dapat membuat tiket baru dari channel WhatsApp</td>
-            <td><span class="badge badge-info">Agent</span></td>
-            <td>Mobile</td>
-            <td><span class="badge badge-high">High</span></td>
-            <td><span class="badge badge-pass">Pass</span></td>
-          </tr>
-          <tr data-status="Fail" class="hidden-row">
-            <td class="tc-id">TC-006</td>
-            <td>Sales Flow</td>
-            <td>Notifikasi real-time muncul saat ada tiket masuk baru</td>
-            <td><span class="badge badge-info">Agent</span></td>
-            <td>Mobile</td>
-            <td><span class="badge badge-medium">Medium</span></td>
-            <td><span class="badge badge-fail">Fail</span></td>
-          </tr>
-          <tr data-status="Pass" class="hidden-row">
-            <td class="tc-id">TC-007</td>
-            <td>Sales Flow</td>
-            <td>Supervisor Sales dapat assign tiket ke Sales tertentu</td>
-            <td><span class="badge badge-info">SPV Sales</span></td>
-            <td>Mobile</td>
-            <td><span class="badge badge-high">High</span></td>
-            <td><span class="badge badge-pass">Pass</span></td>
-          </tr>
-          <tr data-status="Pass" class="hidden-row">
-            <td class="tc-id">TC-008</td>
-            <td>Regression</td>
-            <td>Fitur login tidak terdampak setelah update fitur Sales</td>
-            <td><span class="badge badge-info">All Role</span></td>
-            <td>Web & Mobile</td>
-            <td><span class="badge badge-high">High</span></td>
-            <td><span class="badge badge-pass">Pass</span></td>
-          </tr>
-          <tr data-status="Pass" class="hidden-row">
-            <td class="tc-id">TC-009</td>
-            <td>API</td>
-            <td>GET /tickets mengembalikan list tiket sesuai role yang login</td>
-            <td><span class="badge badge-info">Agent</span></td>
-            <td>API</td>
-            <td><span class="badge badge-high">High</span></td>
-            <td><span class="badge badge-pass">Pass</span></td>
-          </tr>
-          <tr data-status="Fail" class="hidden-row">
-            <td class="tc-id">TC-010</td>
-            <td>DB</td>
-            <td>Status tiket di MongoDB terupdate setelah Sales menutup tiket</td>
-            <td><span class="badge badge-info">Sales</span></td>
-            <td>Web</td>
-            <td><span class="badge badge-critical">Critical</span></td>
-            <td><span class="badge badge-fail">Fail</span></td>
-          </tr>
-        </tbody>
-      </table>
-      <button class="show-more-btn" id="show-more-btn" onclick="toggleShowMore()">▼ Tampilkan lebih banyak (5 test case)</button>
-    </div>
-    <p style="margin-top: 12px; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gray-400);">* Sample test case dari modul SatuInbox — Omni Channel Platform. Data telah dianonimkan.</p>
-  </div>
-
-  <!-- TAB: BUG REPORT -->
-  <div id="tab-bugreport" class="tab-panel">
-    <p style="color: var(--gray-600); margin-bottom: 24px; font-size: 14px;">Klik kartu bug untuk melihat detail lengkap termasuk steps to reproduce, expected vs actual result, dan severity.</p>
-
-    <div class="bug-card">
-      <div class="bug-header" onclick="toggleBug(this)">
-        <div class="bug-title-row">
-          <span class="bug-id">BUG-041</span>
-          <span class="bug-title">Sales dapat mengakses halaman Report yang seharusnya restricted</span>
-        </div>
-        <div style="display: flex; align-items: center; gap: 10px;">
-          <div class="bug-badges">
-            <span class="badge badge-blocking">Blocking</span>
-            <span class="badge badge-critical">Critical</span>
-          </div>
-          <span class="expand-icon">▼</span>
+  <!-- PROJECT: SATUINBOX -->
+  <div class="project-card">
+    <div class="project-header" onclick="toggleProject('satuinbox', this)">
+      <div class="project-header-left">
+        <div class="project-icon">SI</div>
+        <div>
+          <div class="project-name">SatuInbox — Omni Channel Platform</div>
+          <div class="project-meta">Lincah Cipta Harapan · Nov 2025 – Present · 7.000+ pengguna</div>
         </div>
       </div>
-      <div class="bug-body">
-        <div class="bug-grid">
-          <div class="bug-field">
-            <div class="bug-field-label">Environment</div>
-            <div class="bug-field-value">Staging — Web App</div>
-          </div>
-          <div class="bug-field">
-            <div class="bug-field-label">Module</div>
-            <div class="bug-field-value">RBAC / Permission</div>
-          </div>
-          <div class="bug-field">
-            <div class="bug-field-label">Reporter</div>
-            <div class="bug-field-value">Muhamad Rizal Septian</div>
-          </div>
-          <div class="bug-field">
-            <div class="bug-field-label">Sprint</div>
-            <div class="bug-field-value">Sprint 08</div>
-          </div>
-        </div>
-        <div class="bug-field">
-          <div class="bug-field-label">Steps to Reproduce</div>
-          <ol class="bug-steps">
-            <li>Login sebagai user dengan role <strong>Sales</strong></li>
-            <li>Navigasi ke menu Sidebar</li>
-            <li>Observe: menu "Laporan & Analitik" muncul di sidebar</li>
-            <li>Klik menu tersebut</li>
-            <li>Observe: halaman Report berhasil dibuka tanpa redirect atau error</li>
-          </ol>
-        </div>
-        <div class="bug-grid" style="margin-top: 16px;">
-          <div class="bug-field">
-            <div class="bug-field-label">Expected Result</div>
-            <div class="bug-field-value" style="color: var(--green);">Menu "Laporan & Analitik" tidak muncul untuk role Sales, atau jika diakses langsung via URL maka redirect ke halaman 403 Forbidden.</div>
-          </div>
-          <div class="bug-field">
-            <div class="bug-field-label">Actual Result</div>
-            <div class="bug-field-value" style="color: var(--red);">Menu muncul dan halaman Report dapat diakses penuh oleh role Sales, menampilkan data yang seharusnya hanya untuk SPV.</div>
-          </div>
-        </div>
+      <div class="project-badges">
+        <span class="badge badge-web">Web</span>
+        <span class="badge badge-mobile">Mobile</span>
+        <span class="badge badge-info">API</span>
+        <span class="badge badge-info">DB</span>
+        <span class="expand-icon" style="margin-left: 8px;">▼</span>
       </div>
     </div>
+    <div class="project-body" id="project-satuinbox">
+      <div class="scope-tabs">
+        <button class="scope-tab active" onclick="switchScope('si-web', this)">Web Testing</button>
+        <button class="scope-tab" onclick="switchScope('si-mobile', this)">Mobile Testing</button>
+        <button class="scope-tab" onclick="switchScope('si-bugs', this)">Bug Reports</button>
+        <button class="scope-tab" onclick="switchScope('si-api', this)">API Testing</button>
+        <button class="scope-tab" onclick="switchScope('si-db', this)">DB Validation</button>
+      </div>
 
-    <div class="bug-card">
-      <div class="bug-header" onclick="toggleBug(this)">
-        <div class="bug-title-row">
-          <span class="bug-id">BUG-067</span>
-          <span class="bug-title">Notifikasi tiket masuk tidak muncul real-time di Mobile (Android)</span>
-        </div>
-        <div style="display: flex; align-items: center; gap: 10px;">
-          <div class="bug-badges">
-            <span class="badge badge-major">Major</span>
-            <span class="badge badge-medium">Medium</span>
+      <!-- WEB TESTING TAB -->
+      <div class="scope-panel active" id="scope-si-web">
+        <div class="scope-overview">
+          <div class="scope-stat">
+            <div class="scope-stat-num">3</div>
+            <div class="scope-stat-label">Role Web</div>
           </div>
-          <span class="expand-icon">▼</span>
-        </div>
-      </div>
-      <div class="bug-body">
-        <div class="bug-grid">
-          <div class="bug-field">
-            <div class="bug-field-label">Environment</div>
-            <div class="bug-field-value">Staging — Mobile Android (via scrcpy)</div>
+          <div class="scope-stat">
+            <div class="scope-stat-num">2</div>
+            <div class="scope-stat-label">Modul Utama</div>
           </div>
-          <div class="bug-field">
-            <div class="bug-field-label">Module</div>
-            <div class="bug-field-value">Notifikasi / Real-time</div>
-          </div>
-          <div class="bug-field">
-            <div class="bug-field-label">Reporter</div>
-            <div class="bug-field-value">Muhamad Rizal Septian</div>
-          </div>
-          <div class="bug-field">
-            <div class="bug-field-label">Sprint</div>
-            <div class="bug-field-value">Sprint 11</div>
+          <div class="scope-stat">
+            <div class="scope-stat-num">100%</div>
+            <div class="scope-stat-label">Coverage RBAC</div>
           </div>
         </div>
-        <div class="bug-field">
-          <div class="bug-field-label">Steps to Reproduce</div>
-          <ol class="bug-steps">
-            <li>Login sebagai <strong>Agent</strong> di Mobile App</li>
-            <li>Pastikan app dalam kondisi foreground (aktif di layar)</li>
-            <li>Dari device/user lain, kirim pesan baru ke channel WhatsApp yang terhubung</li>
-            <li>Observe: notifikasi badge dan push notification di Mobile Agent</li>
-          </ol>
-        </div>
-        <div class="bug-grid" style="margin-top: 16px;">
-          <div class="bug-field">
-            <div class="bug-field-label">Expected Result</div>
-            <div class="bug-field-value" style="color: var(--green);">Notifikasi muncul dalam &lt;3 detik, badge counter bertambah, dan tiket baru tampil di daftar.</div>
-          </div>
-          <div class="bug-field">
-            <div class="bug-field-label">Actual Result</div>
-            <div class="bug-field-value" style="color: var(--red);">Notifikasi delay 30–60 detik atau tidak muncul sama sekali. Tiket hanya muncul setelah manual refresh halaman.</div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <div class="bug-card">
-      <div class="bug-header" onclick="toggleBug(this)">
-        <div class="bug-title-row">
-          <span class="bug-id">BUG-083</span>
-          <span class="bug-title">Status tiket di DB tidak terupdate setelah Sales menutup tiket via Mobile</span>
+        <div class="section-divider-label">Role yang Diuji</div>
+        <div class="role-grid">
+          <span class="role-pill role-admin">Admin</span>
+          <span class="role-pill role-web">Supervisor (SPV)</span>
+          <span class="role-pill role-web">Agent</span>
         </div>
-        <div style="display: flex; align-items: center; gap: 10px;">
-          <div class="bug-badges">
-            <span class="badge badge-critical">Critical</span>
-            <span class="badge badge-high">High</span>
-          </div>
-          <span class="expand-icon">▼</span>
-        </div>
-      </div>
-      <div class="bug-body">
-        <div class="bug-grid">
-          <div class="bug-field">
-            <div class="bug-field-label">Environment</div>
-            <div class="bug-field-value">Staging — Mobile + MongoDB Compass</div>
-          </div>
-          <div class="bug-field">
-            <div class="bug-field-label">Module</div>
-            <div class="bug-field-value">Sales Flow / DB Consistency</div>
-          </div>
-        </div>
-        <div class="bug-field">
-          <div class="bug-field-label">Steps to Reproduce</div>
-          <ol class="bug-steps">
-            <li>Login sebagai <strong>Sales</strong> di Mobile App</li>
-            <li>Buka tiket aktif dengan status "In Progress"</li>
-            <li>Klik tombol "Tutup Tiket" dan konfirmasi</li>
-            <li>UI menampilkan status berubah menjadi "Closed"</li>
-            <li>Cek dokumen tiket di MongoDB Compass via collection <code>tickets</code></li>
-          </ol>
-        </div>
-        <div class="bug-grid" style="margin-top: 16px;">
-          <div class="bug-field">
-            <div class="bug-field-label">Expected Result</div>
-            <div class="bug-field-value" style="color: var(--green);">Field <code>status</code> di MongoDB berubah menjadi <code>"closed"</code> dan field <code>closedAt</code> terisi timestamp.</div>
-          </div>
-          <div class="bug-field">
-            <div class="bug-field-label">Actual Result</div>
-            <div class="bug-field-value" style="color: var(--red);">Di MongoDB, field <code>status</code> masih <code>"in_progress"</code> dan <code>closedAt</code> bernilai <code>null</code>. Data UI dan DB tidak konsisten.</div>
-          </div>
-        </div>
-        <div class="db-finding">
-          <div class="db-finding-label">DB Evidence</div>
-          <p>Ditemukan via MongoDB Compass — query filter <code>{ _id: ObjectId("...") }</code> menunjukkan dokumen tidak terupdate meski response API mengembalikan status 200 OK. Indikasi race condition atau missing DB write di backend.</p>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- TAB: DB VALIDATION -->
-  <div id="tab-dbvalidation" class="tab-panel">
-    <p style="color: var(--gray-600); margin-bottom: 28px; font-size: 14px;">Validasi data langsung di MongoDB Compass — memastikan konsistensi antara UI, API response, dan data di database.</p>
+        <div class="section-divider-label">Modul 1 — Conversation List & Detail</div>
+        <ul class="feature-list">
+          <li>Tampilan conversation list — filter by status, channel, dan agent assignment</li>
+          <li>Detail conversation — riwayat pesan, informasi kontak, dan status tiket</li>
+          <li>Assign conversation ke agent lain (SPV only)</li>
+          <li>Update status conversation — open, in progress, resolved, closed</li>
+          <li>Search dan filter conversation berdasarkan berbagai parameter</li>
+          <li>Tampilan berbeda per role — SPV melihat semua, Agent hanya miliknya</li>
+        </ul>
 
-    <div style="margin-bottom: 32px;">
-      <h3 style="font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 16px;">Case 1 — Ticket Status Consistency Check</h3>
-      <div class="validation-grid">
-        <div class="validation-box">
-          <div class="validation-box-header">UI Response (Frontend)</div>
-          <div class="validation-box-body">
-            <div class="validation-result"><span class="dot dot-pass"></span>Status tampil: "Closed"</div>
-            <div class="validation-result"><span class="dot dot-pass"></span>Timestamp penutupan tampil</div>
-            <div class="validation-result"><span class="dot dot-pass"></span>Tombol "Tutup Tiket" hilang</div>
+        <div class="section-divider-label" style="margin-top: 24px;">Modul 2 — Sales Web Testing (Multi-Role)</div>
+        <ul class="feature-list">
+          <li>RBAC permission testing — Admin, SPV, Sales memiliki akses berbeda pada menu dan aksi</li>
+          <li>Sales flow dari lead masuk → assign → follow up → close deal</li>
+          <li>Report & Analytics — accessible hanya untuk SPV dan Admin</li>
+          <li>User management — hanya Admin yang dapat menambah/edit/hapus user</li>
+          <li>Dashboard overview — statistik yang ditampilkan berbeda per role</li>
+          <li>API testing via Postman untuk semua endpoint Sales Web</li>
+        </ul>
+
+        <div class="section-divider-label" style="margin-top: 24px;">Test Cases — Web</div>
+        <div class="filter-bar">
+          <input type="text" class="search-input" placeholder="Search test case..." oninput="filterTableById('tc-web-body', this.value)" id="web-search">
+          <button class="filter-btn active" onclick="filterTableByStatusId('tc-web-body', 'all', this)">All</button>
+          <button class="filter-btn" onclick="filterTableByStatusId('tc-web-body', 'Pass', this)">Pass</button>
+          <button class="filter-btn" onclick="filterTableByStatusId('tc-web-body', 'Fail', this)">Fail</button>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr><th>TC ID</th><th>Modul</th><th>Test Scenario</th><th>Role</th><th>Priority</th><th>Status</th></tr>
+            </thead>
+            <tbody id="tc-web-body">
+              <tr data-status="Pass"><td class="tc-id">TC-W01</td><td>Login</td><td>Login dengan kredensial valid sebagai Admin</td><td><span class="badge badge-info">Admin</span></td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-pass">Pass</span></td></tr>
+              <tr data-status="Pass"><td class="tc-id">TC-W02</td><td>Login</td><td>Login password salah menampilkan error message</td><td><span class="badge badge-info">All Role</span></td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-pass">Pass</span></td></tr>
+              <tr data-status="Fail"><td class="tc-id">TC-W03</td><td>RBAC</td><td>Sales tidak bisa mengakses menu Report untuk SPV</td><td><span class="badge badge-info">Sales</span></td><td><span class="badge badge-critical">Critical</span></td><td><span class="badge badge-fail">Fail</span></td></tr>
+              <tr data-status="Pass"><td class="tc-id">TC-W04</td><td>RBAC</td><td>SPV dapat melihat semua transaksi di bawah timnya</td><td><span class="badge badge-info">SPV</span></td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-pass">Pass</span></td></tr>
+              <tr data-status="Pass"><td class="tc-id">TC-W05</td><td>Conversation</td><td>Agent hanya melihat conversation yang di-assign ke dia</td><td><span class="badge badge-info">Agent</span></td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-pass">Pass</span></td></tr>
+              <tr data-status="Pass" class="hidden-row"><td class="tc-id">TC-W06</td><td>Conversation</td><td>SPV dapat assign conversation ke agent lain</td><td><span class="badge badge-info">SPV</span></td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-pass">Pass</span></td></tr>
+              <tr data-status="Pass" class="hidden-row"><td class="tc-id">TC-W07</td><td>Sales</td><td>Admin dapat menambah user baru dengan role Sales</td><td><span class="badge badge-info">Admin</span></td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-pass">Pass</span></td></tr>
+              <tr data-status="Fail" class="hidden-row"><td class="tc-id">TC-W08</td><td>API</td><td>GET /api/reports mengembalikan 403 jika role Sales</td><td><span class="badge badge-info">Sales</span></td><td><span class="badge badge-critical">Critical</span></td><td><span class="badge badge-fail">Fail</span></td></tr>
+              <tr data-status="Pass" class="hidden-row"><td class="tc-id">TC-W09</td><td>Regression</td><td>Fitur login tidak terdampak setelah update fitur Sales</td><td><span class="badge badge-info">All Role</span></td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-pass">Pass</span></td></tr>
+            </tbody>
+          </table>
+          <button class="show-more-btn" onclick="toggleShowMoreTable('tc-web-body', this)">▼ Tampilkan lebih banyak (4 test case)</button>
+        </div>
+      </div>
+
+      <!-- MOBILE TESTING TAB -->
+      <div class="scope-panel" id="scope-si-mobile">
+        <div class="scope-overview">
+          <div class="scope-stat">
+            <div class="scope-stat-num">5</div>
+            <div class="scope-stat-label">Role Mobile</div>
+          </div>
+          <div class="scope-stat">
+            <div class="scope-stat-num">scrcpy</div>
+            <div class="scope-stat-label">Testing Tool</div>
+          </div>
+          <div class="scope-stat">
+            <div class="scope-stat-num">Android</div>
+            <div class="scope-stat-label">Platform</div>
           </div>
         </div>
-        <div class="validation-box">
-          <div class="validation-box-header">MongoDB Compass (Database)</div>
-          <div class="validation-box-body">
-            <div class="validation-result"><span class="dot dot-fail"></span>status: "in_progress" ← tidak sesuai</div>
-            <div class="validation-result"><span class="dot dot-fail"></span>closedAt: null ← tidak terupdate</div>
-            <div class="validation-result"><span class="dot dot-pass"></span>updatedAt: berubah (timestamp ada)</div>
+
+        <div class="section-divider-label">Role yang Diuji — Mobile</div>
+        <div class="role-grid">
+          <span class="role-pill role-admin">Admin</span>
+          <span class="role-pill role-mobile">Supervisor</span>
+          <span class="role-pill role-mobile">Supervisor Sales</span>
+          <span class="role-pill role-mobile">Agent</span>
+          <span class="role-pill role-mobile">Sales</span>
+        </div>
+
+        <div class="section-divider-label">Cakupan Testing Mobile</div>
+        <ul class="feature-list">
+          <li>Seluruh fitur Sales Mobile — dari pengajuan, tracking, hingga closing deal</li>
+          <li>Push notification real-time saat ada tiket/conversation masuk baru</li>
+          <li>Assign tiket dari Supervisor Sales ke Sales tertentu</li>
+          <li>Sales dapat view dan update status tiket yang di-assign ke mereka</li>
+          <li>Agent menangani conversation dari berbagai channel (WhatsApp, dll.)</li>
+          <li>Admin mobile — monitoring dan manajemen pengguna via mobile</li>
+          <li>RBAC mobile — validasi permission sama seperti di Web</li>
+          <li>Offline/poor connection behavior — app behavior saat koneksi buruk</li>
+          <li>API validation via Postman untuk endpoint mobile</li>
+          <li>DB validation via MongoDB Compass — cek data setelah aksi di mobile</li>
+        </ul>
+
+        <div class="section-divider-label" style="margin-top: 24px;">Test Cases — Mobile</div>
+        <div class="filter-bar">
+          <input type="text" class="search-input" placeholder="Search test case..." oninput="filterTableById('tc-mob-body', this.value)">
+          <button class="filter-btn active" onclick="filterTableByStatusId('tc-mob-body', 'all', this)">All</button>
+          <button class="filter-btn" onclick="filterTableByStatusId('tc-mob-body', 'Pass', this)">Pass</button>
+          <button class="filter-btn" onclick="filterTableByStatusId('tc-mob-body', 'Fail', this)">Fail</button>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr><th>TC ID</th><th>Modul</th><th>Test Scenario</th><th>Role</th><th>Priority</th><th>Status</th></tr>
+            </thead>
+            <tbody id="tc-mob-body">
+              <tr data-status="Pass"><td class="tc-id">TC-M01</td><td>Login</td><td>Login sebagai Agent di Mobile berhasil</td><td><span class="badge badge-info">Agent</span></td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-pass">Pass</span></td></tr>
+              <tr data-status="Pass"><td class="tc-id">TC-M02</td><td>Sales Flow</td><td>Agent dapat membuat tiket baru dari channel WhatsApp</td><td><span class="badge badge-info">Agent</span></td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-pass">Pass</span></td></tr>
+              <tr data-status="Fail"><td class="tc-id">TC-M03</td><td>Notifikasi</td><td>Notifikasi real-time muncul ≤3 detik saat tiket masuk</td><td><span class="badge badge-info">Agent</span></td><td><span class="badge badge-medium">Medium</span></td><td><span class="badge badge-fail">Fail</span></td></tr>
+              <tr data-status="Pass"><td class="tc-id">TC-M04</td><td>Sales Flow</td><td>SPV Sales dapat assign tiket ke Sales tertentu</td><td><span class="badge badge-info">SPV Sales</span></td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-pass">Pass</span></td></tr>
+              <tr data-status="Fail"><td class="tc-id">TC-M05</td><td>DB Sync</td><td>Status tiket di MongoDB terupdate setelah Sales tutup tiket</td><td><span class="badge badge-info">Sales</span></td><td><span class="badge badge-critical">Critical</span></td><td><span class="badge badge-fail">Fail</span></td></tr>
+              <tr data-status="Pass" class="hidden-row"><td class="tc-id">TC-M06</td><td>RBAC</td><td>Sales Mobile tidak bisa akses menu Admin</td><td><span class="badge badge-info">Sales</span></td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-pass">Pass</span></td></tr>
+              <tr data-status="Pass" class="hidden-row"><td class="tc-id">TC-M07</td><td>Sales Flow</td><td>Sales dapat update status deal dari mobile</td><td><span class="badge badge-info">Sales</span></td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-pass">Pass</span></td></tr>
+              <tr data-status="Pass" class="hidden-row"><td class="tc-id">TC-M08</td><td>Regression</td><td>Fitur conversation tidak terdampak setelah update Sales</td><td><span class="badge badge-info">All Role</span></td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-pass">Pass</span></td></tr>
+            </tbody>
+          </table>
+          <button class="show-more-btn" onclick="toggleShowMoreTable('tc-mob-body', this)">▼ Tampilkan lebih banyak (3 test case)</button>
+        </div>
+      </div>
+
+      <!-- BUG REPORTS TAB -->
+      <div class="scope-panel" id="scope-si-bugs">
+        <p style="color: var(--gray-600); margin-bottom: 24px; font-size: 14px;">Klik kartu bug untuk melihat detail — steps to reproduce, expected vs actual result, dan severity.</p>
+
+        <div class="bug-card">
+          <div class="bug-header" onclick="toggleBug(this)">
+            <div class="bug-title-row">
+              <span class="bug-id">BUG-041</span>
+              <span class="bug-title">Sales dapat mengakses halaman Report yang seharusnya restricted</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <div class="bug-badges"><span class="badge badge-blocking">Blocking</span><span class="badge badge-critical">Critical</span><span class="badge badge-web">Web</span></div>
+              <span class="expand-icon">▼</span>
+            </div>
+          </div>
+          <div class="bug-body">
+            <div class="bug-grid">
+              <div class="bug-field"><div class="bug-field-label">Environment</div><div class="bug-field-value">Staging — Web App</div></div>
+              <div class="bug-field"><div class="bug-field-label">Module</div><div class="bug-field-value">RBAC / Permission</div></div>
+              <div class="bug-field"><div class="bug-field-label">Reporter</div><div class="bug-field-value">Muhamad Rizal Septian</div></div>
+              <div class="bug-field"><div class="bug-field-label">Sprint</div><div class="bug-field-value">Sprint 08</div></div>
+            </div>
+            <div class="bug-field">
+              <div class="bug-field-label">Steps to Reproduce</div>
+              <ol class="bug-steps">
+                <li>Login sebagai user dengan role <strong>Sales</strong></li>
+                <li>Navigasi ke menu Sidebar</li>
+                <li>Observe: menu "Laporan & Analitik" muncul di sidebar</li>
+                <li>Klik menu tersebut</li>
+                <li>Observe: halaman Report berhasil dibuka tanpa redirect atau error</li>
+              </ol>
+            </div>
+            <div class="bug-grid" style="margin-top:16px;">
+              <div class="bug-field"><div class="bug-field-label">Expected Result</div><div class="bug-field-value" style="color:var(--green);">Menu "Laporan & Analitik" tidak muncul untuk role Sales, atau jika diakses via URL → redirect 403 Forbidden.</div></div>
+              <div class="bug-field"><div class="bug-field-label">Actual Result</div><div class="bug-field-value" style="color:var(--red);">Menu muncul dan halaman Report dapat diakses penuh oleh role Sales, menampilkan data yang seharusnya hanya untuk SPV.</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bug-card">
+          <div class="bug-header" onclick="toggleBug(this)">
+            <div class="bug-title-row">
+              <span class="bug-id">BUG-067</span>
+              <span class="bug-title">Notifikasi tiket masuk tidak muncul real-time di Mobile Android</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <div class="bug-badges"><span class="badge badge-major">Major</span><span class="badge badge-medium">Medium</span><span class="badge badge-mobile">Mobile</span></div>
+              <span class="expand-icon">▼</span>
+            </div>
+          </div>
+          <div class="bug-body">
+            <div class="bug-grid">
+              <div class="bug-field"><div class="bug-field-label">Environment</div><div class="bug-field-value">Staging — Mobile Android (via scrcpy)</div></div>
+              <div class="bug-field"><div class="bug-field-label">Module</div><div class="bug-field-value">Notifikasi / Real-time</div></div>
+              <div class="bug-field"><div class="bug-field-label">Reporter</div><div class="bug-field-value">Muhamad Rizal Septian</div></div>
+              <div class="bug-field"><div class="bug-field-label">Sprint</div><div class="bug-field-value">Sprint 11</div></div>
+            </div>
+            <div class="bug-field">
+              <div class="bug-field-label">Steps to Reproduce</div>
+              <ol class="bug-steps">
+                <li>Login sebagai <strong>Agent</strong> di Mobile App</li>
+                <li>Pastikan app dalam kondisi foreground (aktif di layar)</li>
+                <li>Dari device lain, kirim pesan ke channel WhatsApp yang terhubung</li>
+                <li>Observe: notifikasi badge dan push notification di Mobile Agent</li>
+              </ol>
+            </div>
+            <div class="bug-grid" style="margin-top:16px;">
+              <div class="bug-field"><div class="bug-field-label">Expected Result</div><div class="bug-field-value" style="color:var(--green);">Notifikasi muncul dalam &lt;3 detik, badge counter bertambah, tiket baru tampil di daftar.</div></div>
+              <div class="bug-field"><div class="bug-field-label">Actual Result</div><div class="bug-field-value" style="color:var(--red);">Notifikasi delay 30–60 detik atau tidak muncul. Tiket hanya muncul setelah manual refresh halaman.</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bug-card">
+          <div class="bug-header" onclick="toggleBug(this)">
+            <div class="bug-title-row">
+              <span class="bug-id">BUG-083</span>
+              <span class="bug-title">Status tiket di DB tidak terupdate setelah Sales menutup tiket via Mobile</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <div class="bug-badges"><span class="badge badge-critical">Critical</span><span class="badge badge-high">High</span><span class="badge badge-mobile">Mobile</span></div>
+              <span class="expand-icon">▼</span>
+            </div>
+          </div>
+          <div class="bug-body">
+            <div class="bug-grid">
+              <div class="bug-field"><div class="bug-field-label">Environment</div><div class="bug-field-value">Staging — Mobile + MongoDB Compass</div></div>
+              <div class="bug-field"><div class="bug-field-label">Module</div><div class="bug-field-value">Sales Flow / DB Consistency</div></div>
+            </div>
+            <div class="bug-field">
+              <div class="bug-field-label">Steps to Reproduce</div>
+              <ol class="bug-steps">
+                <li>Login sebagai <strong>Sales</strong> di Mobile App</li>
+                <li>Buka tiket aktif dengan status "In Progress"</li>
+                <li>Klik tombol "Tutup Tiket" dan konfirmasi</li>
+                <li>UI menampilkan status berubah menjadi "Closed"</li>
+                <li>Cek dokumen tiket di MongoDB Compass — collection <code>tickets</code></li>
+              </ol>
+            </div>
+            <div class="bug-grid" style="margin-top:16px;">
+              <div class="bug-field"><div class="bug-field-label">Expected Result</div><div class="bug-field-value" style="color:var(--green);">Field <code>status</code> di MongoDB berubah ke <code>"closed"</code> dan <code>closedAt</code> terisi timestamp.</div></div>
+              <div class="bug-field"><div class="bug-field-label">Actual Result</div><div class="bug-field-value" style="color:var(--red);">MongoDB: <code>status</code> masih <code>"in_progress"</code>, <code>closedAt</code> bernilai <code>null</code>. UI dan DB tidak konsisten.</div></div>
+            </div>
+            <div class="db-finding">
+              <div class="db-finding-label">DB Evidence</div>
+              <p>Ditemukan via MongoDB Compass — query filter <code>{ _id: ObjectId("...") }</code> menunjukkan dokumen tidak terupdate meski API response mengembalikan 200 OK. Indikasi race condition atau missing DB write di backend.</p>
+            </div>
           </div>
         </div>
       </div>
-      <div class="db-card">
-        <div class="db-card-header">
-          <span class="db-card-title">MongoDB Query — tickets collection</span>
-          <span class="db-card-badge">db.tickets.findOne()</span>
+
+      <!-- API TESTING TAB -->
+      <div class="scope-panel" id="scope-si-api">
+        <p style="color: var(--gray-600); margin-bottom: 20px; font-size: 14px;">API testing menggunakan Postman — validasi endpoint, authentication, dan RBAC access control.</p>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr><th>Method</th><th>Endpoint</th><th>Deskripsi</th><th>Auth</th><th>Expected</th><th>Result</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><span class="api-method method-post">POST</span></td><td class="api-endpoint">/api/auth/login</td><td>Login user & dapatkan JWT token</td><td><span class="badge badge-info">None</span></td><td class="tc-id">200 OK</td><td><span class="badge badge-pass">Pass</span></td></tr>
+              <tr><td><span class="api-method method-get">GET</span></td><td class="api-endpoint">/api/tickets</td><td>List tiket sesuai role user yang login</td><td><span class="badge badge-info">Bearer</span></td><td class="tc-id">200 OK</td><td><span class="badge badge-pass">Pass</span></td></tr>
+              <tr><td><span class="api-method method-post">POST</span></td><td class="api-endpoint">/api/tickets</td><td>Buat tiket baru</td><td><span class="badge badge-info">Bearer</span></td><td class="tc-id">201 Created</td><td><span class="badge badge-pass">Pass</span></td></tr>
+              <tr><td><span class="api-method method-put">PUT</span></td><td class="api-endpoint">/api/tickets/:id/close</td><td>Tutup tiket — validasi DB update</td><td><span class="badge badge-info">Bearer</span></td><td class="tc-id">200 OK</td><td><span class="badge badge-fail">Fail</span></td></tr>
+              <tr><td><span class="api-method method-get">GET</span></td><td class="api-endpoint">/api/reports</td><td>Akses report — harus 403 jika role Sales</td><td><span class="badge badge-info">Bearer (Sales)</span></td><td class="tc-id">403 Forbidden</td><td><span class="badge badge-fail">Fail</span></td></tr>
+              <tr><td><span class="api-method method-get">GET</span></td><td class="api-endpoint">/api/users/me</td><td>Get current user profile & permissions</td><td><span class="badge badge-info">Bearer</span></td><td class="tc-id">200 OK</td><td><span class="badge badge-pass">Pass</span></td></tr>
+              <tr><td><span class="api-method method-delete">DELETE</span></td><td class="api-endpoint">/api/tickets/:id</td><td>Hapus tiket — hanya Admin</td><td><span class="badge badge-info">Bearer (Admin)</span></td><td class="tc-id">200 OK</td><td><span class="badge badge-pass">Pass</span></td></tr>
+            </tbody>
+          </table>
         </div>
-        <div class="db-code"><span class="comment">// Expected document after close action:</span>
+        <p style="margin-top:12px; font-family:'DM Mono',monospace; font-size:11px; color:var(--gray-400);">* Endpoint dianonimkan. Postman collection tersedia di GitHub.</p>
+      </div>
+
+      <!-- DB VALIDATION TAB -->
+      <div class="scope-panel" id="scope-si-db">
+        <p style="color: var(--gray-600); margin-bottom: 28px; font-size: 14px;">Validasi data di MongoDB Compass — memastikan konsistensi antara UI, API response, dan database.</p>
+
+        <h3 style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:var(--gray-400); margin-bottom:16px;">Case 1 — Ticket Status Consistency Check</h3>
+        <div class="validation-grid">
+          <div class="validation-box">
+            <div class="validation-box-header">UI Response (Frontend)</div>
+            <div class="validation-box-body">
+              <div class="validation-result"><span class="dot dot-pass"></span>Status tampil: "Closed"</div>
+              <div class="validation-result"><span class="dot dot-pass"></span>Timestamp penutupan tampil</div>
+              <div class="validation-result"><span class="dot dot-pass"></span>Tombol "Tutup Tiket" hilang</div>
+            </div>
+          </div>
+          <div class="validation-box">
+            <div class="validation-box-header">MongoDB Compass (Database)</div>
+            <div class="validation-box-body">
+              <div class="validation-result"><span class="dot dot-fail"></span>status: "in_progress" ← tidak sesuai</div>
+              <div class="validation-result"><span class="dot dot-fail"></span>closedAt: null ← tidak terupdate</div>
+              <div class="validation-result"><span class="dot dot-pass"></span>updatedAt: berubah (timestamp ada)</div>
+            </div>
+          </div>
+        </div>
+        <div class="db-card">
+          <div class="db-card-header">
+            <span class="db-card-title">MongoDB Query — tickets collection</span>
+            <span class="db-card-badge">db.tickets.findOne()</span>
+          </div>
+          <div class="db-code"><span class="comment">// Expected document after close action:</span>
 {
   <span class="key">"_id"</span>: <span class="str">ObjectId("64f3a1b2c3d4e5f678901234")</span>,
-  <span class="key">"ticketCode"</span>: <span class="str">"TKT-2024-0083"</span>,
   <span class="key">"status"</span>: <span class="str">"closed"</span>,          <span class="comment">// ← expected</span>
   <span class="key">"closedAt"</span>: <span class="str">ISODate("2025-12-10T09:30:00Z")</span>,  <span class="comment">// ← expected</span>
   <span class="key">"closedBy"</span>: <span class="str">"user_sales_id_456"</span>
 }
 
-<span class="comment">// Actual document found in DB:</span>
+<span class="comment">// Actual document found in DB (BUG):</span>
 {
   <span class="key">"_id"</span>: <span class="str">ObjectId("64f3a1b2c3d4e5f678901234")</span>,
-  <span class="key">"ticketCode"</span>: <span class="str">"TKT-2024-0083"</span>,
   <span class="key">"status"</span>: <span class="str">"in_progress"</span>,    <span class="comment">// ← BUG: tidak terupdate</span>
   <span class="key">"closedAt"</span>: <span class="num">null</span>,              <span class="comment">// ← BUG: masih null</span>
   <span class="key">"closedBy"</span>: <span class="num">null</span>               <span class="comment">// ← BUG: masih null</span>
 }</div>
-      </div>
-    </div>
+        </div>
 
-    <div>
-      <h3 style="font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 16px;">Case 2 — User Role Assignment Validation</h3>
-      <div class="validation-grid">
-        <div class="validation-box">
-          <div class="validation-box-header">PRD Definition</div>
-          <div class="validation-box-body">
-            <div class="validation-result"><span class="dot dot-pass"></span>Sales: role = "sales"</div>
-            <div class="validation-result"><span class="dot dot-pass"></span>SPV: role = "supervisor"</div>
-            <div class="validation-result"><span class="dot dot-pass"></span>Agent: role = "agent"</div>
+        <h3 style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:var(--gray-400); margin-bottom:16px; margin-top:32px;">Case 2 — User Role Assignment Validation</h3>
+        <div class="validation-grid">
+          <div class="validation-box">
+            <div class="validation-box-header">PRD Definition</div>
+            <div class="validation-box-body">
+              <div class="validation-result"><span class="dot dot-pass"></span>Sales: role = "sales"</div>
+              <div class="validation-result"><span class="dot dot-pass"></span>SPV: role = "supervisor"</div>
+              <div class="validation-result"><span class="dot dot-pass"></span>Agent: role = "agent"</div>
+            </div>
+          </div>
+          <div class="validation-box">
+            <div class="validation-box-header">MongoDB — users collection</div>
+            <div class="validation-box-body">
+              <div class="validation-result"><span class="dot dot-pass"></span>Sales: role: "sales" ✓</div>
+              <div class="validation-result"><span class="dot dot-pass"></span>SPV: role: "supervisor" ✓</div>
+              <div class="validation-result"><span class="dot dot-pass"></span>Agent: role: "agent" ✓</div>
+            </div>
           </div>
         </div>
-        <div class="validation-box">
-          <div class="validation-box-header">MongoDB — users collection</div>
-          <div class="validation-box-body">
-            <div class="validation-result"><span class="dot dot-pass"></span>Sales: role: "sales" ✓</div>
-            <div class="validation-result"><span class="dot dot-pass"></span>SPV: role: "supervisor" ✓</div>
-            <div class="validation-result"><span class="dot dot-pass"></span>Agent: role: "agent" ✓</div>
-          </div>
-        </div>
-      </div>
-      <div class="db-card">
-        <div class="db-card-header">
-          <span class="db-card-title">MongoDB Query — users collection</span>
-          <span class="db-card-badge">db.users.find()</span>
-        </div>
-        <div class="db-code"><span class="comment">// Query untuk validasi role assignment:</span>
-db.users.find(
-  { <span class="key">"role"</span>: { <span class="key">"$in"</span>: [<span class="str">"sales"</span>, <span class="str">"supervisor"</span>, <span class="str">"agent"</span>] } },
-  { <span class="key">"name"</span>: <span class="num">1</span>, <span class="key">"role"</span>: <span class="num">1</span>, <span class="key">"permissions"</span>: <span class="num">1</span> }
-)
-
-<span class="comment">// Result — all roles match PRD definition ✓</span>
-[
-  { <span class="key">"name"</span>: <span class="str">"User A"</span>, <span class="key">"role"</span>: <span class="str">"sales"</span>, <span class="key">"permissions"</span>: [<span class="str">"ticket:read"</span>, <span class="str">"ticket:create"</span>] },
-  { <span class="key">"name"</span>: <span class="str">"User B"</span>, <span class="key">"role"</span>: <span class="str">"supervisor"</span>, <span class="key">"permissions"</span>: [<span class="str">"ticket:*"</span>, <span class="str">"report:read"</span>] },
-  { <span class="key">"name"</span>: <span class="str">"User C"</span>, <span class="key">"role"</span>: <span class="str">"agent"</span>, <span class="key">"permissions"</span>: [<span class="str">"ticket:read"</span>, <span class="str">"ticket:update"</span>] }
-]</div>
       </div>
     </div>
   </div>
 
-  <!-- TAB: API TESTING -->
-  <div id="tab-api" class="tab-panel">
-    <p style="color: var(--gray-600); margin-bottom: 28px; font-size: 14px;">API testing dilakukan menggunakan Postman. Collection tersedia di GitHub untuk diimport dan dijalankan langsung.</p>
+  <!-- EXPERIENCE SECTION under projects -->
+  <div style="margin-top: 20px; padding: 24px; background: var(--gray-100); border-radius: 8px; border: 1px dashed var(--gray-200);">
+    <div style="font-family:'DM Mono',monospace; font-size:11px; color:var(--gray-400); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:8px;">Coming Next</div>
+    <div style="font-size:14px; color:var(--gray-600);">Project Timesheet App (PT Len Railway Systems) — Full Stack Development. Dokumentasi dalam proses.</div>
+  </div>
+</section>
 
-    <div style="background: var(--gray-100); border: 1px solid var(--gray-200); border-radius: 6px; padding: 16px 20px; margin-bottom: 28px; display: flex; align-items: center; justify-content: space-between;">
+<hr class="divider">
+
+<!-- CERTIFICATES -->
+<section id="certificates">
+  <div class="section-label">05 — Certificates</div>
+  <h2>Sertifikasi &<br>Pelatihan</h2>
+  <p style="color: var(--gray-600); margin-bottom: 32px; font-size: 15px; margin-top: -20px;">Sertifikat yang sudah diraih dan program yang sedang dijalani.</p>
+
+  <div class="cert-grid">
+    <!-- Placeholder slots — ganti dengan sertifikat asli -->
+    <div class="cert-card placeholder">
+      <div class="cert-icon">+</div>
       <div>
-        <div style="font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gray-400); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.08em;">Postman Collection</div>
-        <div style="font-size: 14px; font-weight: 500;">SatuInbox API — QA Collection</div>
-        <div style="font-size: 12px; color: var(--gray-400); margin-top: 2px;">Upload ke GitHub segera — available for import</div>
+        <div class="cert-name">Sertifikat akan segera ditambahkan</div>
+        <div class="cert-placeholder-note">Upload sertifikat kamu di sini — kursus, bootcamp, atau pelatihan QA yang pernah diikuti.</div>
       </div>
-      <a href="https://github.com" class="btn btn-outline" style="font-size: 12px; padding: 8px 16px;">GitHub →</a>
     </div>
-
-    <div class="table-wrapper">
-      <table>
-        <thead>
-          <tr>
-            <th>Method</th>
-            <th>Endpoint</th>
-            <th>Deskripsi</th>
-            <th>Auth</th>
-            <th>Expected Status</th>
-            <th>Result</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><span class="api-method method-post">POST</span></td>
-            <td class="api-endpoint">/api/auth/login</td>
-            <td>Login user & dapatkan JWT token</td>
-            <td><span class="badge badge-info">None</span></td>
-            <td class="tc-id">200 OK</td>
-            <td><span class="badge badge-pass">Pass</span></td>
-          </tr>
-          <tr>
-            <td><span class="api-method method-get">GET</span></td>
-            <td class="api-endpoint">/api/tickets</td>
-            <td>Ambil list tiket berdasarkan role user</td>
-            <td><span class="badge badge-info">Bearer</span></td>
-            <td class="tc-id">200 OK</td>
-            <td><span class="badge badge-pass">Pass</span></td>
-          </tr>
-          <tr>
-            <td><span class="api-method method-post">POST</span></td>
-            <td class="api-endpoint">/api/tickets</td>
-            <td>Buat tiket baru</td>
-            <td><span class="badge badge-info">Bearer</span></td>
-            <td class="tc-id">201 Created</td>
-            <td><span class="badge badge-pass">Pass</span></td>
-          </tr>
-          <tr>
-            <td><span class="api-method method-put">PUT</span></td>
-            <td class="api-endpoint">/api/tickets/:id/close</td>
-            <td>Tutup tiket — validasi DB update</td>
-            <td><span class="badge badge-info">Bearer</span></td>
-            <td class="tc-id">200 OK</td>
-            <td><span class="badge badge-fail">Fail</span></td>
-          </tr>
-          <tr>
-            <td><span class="api-method method-get">GET</span></td>
-            <td class="api-endpoint">/api/tickets/:id</td>
-            <td>Detail tiket by ID</td>
-            <td><span class="badge badge-info">Bearer</span></td>
-            <td class="tc-id">200 OK</td>
-            <td><span class="badge badge-pass">Pass</span></td>
-          </tr>
-          <tr>
-            <td><span class="api-method method-get">GET</span></td>
-            <td class="api-endpoint">/api/reports</td>
-            <td>Akses report — harus 403 jika role Sales</td>
-            <td><span class="badge badge-info">Bearer (Sales)</span></td>
-            <td class="tc-id">403 Forbidden</td>
-            <td><span class="badge badge-fail">Fail</span></td>
-          </tr>
-          <tr>
-            <td><span class="api-method method-get">GET</span></td>
-            <td class="api-endpoint">/api/users/me</td>
-            <td>Get current user profile & permissions</td>
-            <td><span class="badge badge-info">Bearer</span></td>
-            <td class="tc-id">200 OK</td>
-            <td><span class="badge badge-pass">Pass</span></td>
-          </tr>
-          <tr>
-            <td><span class="api-method method-delete">DELETE</span></td>
-            <td class="api-endpoint">/api/tickets/:id</td>
-            <td>Hapus tiket — hanya Admin</td>
-            <td><span class="badge badge-info">Bearer (Admin)</span></td>
-            <td class="tc-id">200 OK</td>
-            <td><span class="badge badge-pass">Pass</span></td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="cert-card placeholder">
+      <div class="cert-icon">+</div>
+      <div>
+        <div class="cert-name">Sertifikat akan segera ditambahkan</div>
+        <div class="cert-placeholder-note">Contoh: ISTQB Foundation Level, Udemy QA Course, dll.</div>
+      </div>
     </div>
-    <p style="margin-top: 12px; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gray-400);">* Endpoint dianonimkan. Full collection tersedia di GitHub setelah upload Postman JSON.</p>
+    <div class="cert-card placeholder">
+      <div class="cert-icon">+</div>
+      <div>
+        <div class="cert-name">Sertifikat akan segera ditambahkan</div>
+        <div class="cert-placeholder-note">Contoh: Postman API Fundamentals, MongoDB University, dll.</div>
+      </div>
+    </div>
   </div>
+
+  <p style="margin-top: 20px; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gray-400);">
+    * Slot sertifikat disiapkan — kirimkan nama sertifikat, issuer, dan tanggal untuk ditampilkan di sini.
+  </p>
 </section>
 
 <hr class="divider">
 
 <!-- CONTACT -->
 <section id="contact">
-  <div class="section-label">04 — Contact</div>
+  <div class="section-label">06 — Contact</div>
   <div class="contact-grid">
     <div>
       <h2>Let's Connect</h2>
-      <p style="color: var(--gray-600); margin-bottom: 32px; line-height: 1.7;">Terbuka untuk peluang QA Engineer — fulltime maupun kontrak. Feel free to reach out!</p>
+      <p style="color:var(--gray-600); margin-bottom:32px; line-height:1.7;">Terbuka untuk peluang QA Engineer — fulltime maupun kontrak. Feel free to reach out!</p>
       <div>
         <a href="mailto:rzllsptnn19@gmail.com" class="contact-item">
           <div class="contact-icon">@</div>
-          <div>
-            <div class="contact-label">Email</div>
-            <div class="contact-value">rzllsptnn19@gmail.com</div>
-          </div>
+          <div><div class="contact-label">Email</div><div class="contact-value">rzllsptnn19@gmail.com</div></div>
           <span class="contact-arrow">→</span>
         </a>
         <a href="https://bit.ly/linkedIn_Rizal" target="_blank" class="contact-item">
           <div class="contact-icon">in</div>
-          <div>
-            <div class="contact-label">LinkedIn</div>
-            <div class="contact-value">linkedin.com/in/rizalseptian</div>
-          </div>
+          <div><div class="contact-label">LinkedIn</div><div class="contact-value">linkedin.com/in/rizalseptian</div></div>
           <span class="contact-arrow">→</span>
         </a>
         <a href="tel:+6289563580185" class="contact-item">
           <div class="contact-icon">#</div>
-          <div>
-            <div class="contact-label">Phone / WhatsApp</div>
-            <div class="contact-value">+62 895-6358-01854</div>
-          </div>
+          <div><div class="contact-label">Phone / WhatsApp</div><div class="contact-value">+62 895-6358-01854</div></div>
           <span class="contact-arrow">→</span>
         </a>
         <a href="https://bit.ly/Rizal_QA" target="_blank" class="contact-item">
           <div class="contact-icon">↗</div>
-          <div>
-            <div class="contact-label">Portfolio Link</div>
-            <div class="contact-value">bit.ly/Rizal_QA</div>
-          </div>
+          <div><div class="contact-label">Portfolio Link</div><div class="contact-value">bit.ly/Rizal_QA</div></div>
           <span class="contact-arrow">→</span>
         </a>
       </div>
     </div>
-    <div style="background: var(--gray-100); border-radius: 8px; padding: 40px; display: flex; flex-direction: column; justify-content: center;">
-      <div style="font-family: 'DM Serif Display', serif; font-size: 28px; color: var(--black); line-height: 1.3; margin-bottom: 20px;">"Quality is not an act, it is a habit."</div>
-      <div style="font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gray-400); letter-spacing: 0.08em;">— Aristotle</div>
-      <hr style="border: none; border-top: 1px solid var(--gray-200); margin: 24px 0;">
-      <div style="display: flex; gap: 20px;">
+    <div style="background:var(--gray-100); border-radius:8px; padding:40px; display:flex; flex-direction:column; justify-content:center;">
+      <div style="font-family:'DM Serif Display',serif; font-size:28px; color:var(--black); line-height:1.3; margin-bottom:20px;">"Quality is not an act, it is a habit."</div>
+      <div style="font-family:'DM Mono',monospace; font-size:11px; color:var(--gray-400); letter-spacing:0.08em;">— Aristotle</div>
+      <hr style="border:none; border-top:1px solid var(--gray-200); margin:24px 0;">
+      <div style="display:flex; gap:20px;">
         <div>
-          <div style="font-family: 'DM Serif Display', serif; font-size: 24px;">3.63</div>
-          <div style="font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.08em;">GPA / 4.0</div>
+          <div style="font-family:'DM Serif Display',serif; font-size:24px;">3.63</div>
+          <div style="font-family:'DM Mono',monospace; font-size:11px; color:var(--gray-400); text-transform:uppercase; letter-spacing:0.08em;">GPA / 4.0</div>
         </div>
         <div>
-          <div style="font-family: 'DM Serif Display', serif; font-size: 24px;">Bandung</div>
-          <div style="font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.08em;">Location</div>
+          <div style="font-family:'DM Serif Display',serif; font-size:24px;">Bandung</div>
+          <div style="font-family:'DM Mono',monospace; font-size:11px; color:var(--gray-400); text-transform:uppercase; letter-spacing:0.08em;">Location</div>
         </div>
         <div>
-          <div style="font-family: 'DM Serif Display', serif; font-size: 24px;">Agile</div>
-          <div style="font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.08em;">Methodology</div>
+          <div style="font-family:'DM Serif Display',serif; font-size:24px;">Agile</div>
+          <div style="font-family:'DM Mono',monospace; font-size:11px; color:var(--gray-400); text-transform:uppercase; letter-spacing:0.08em;">Methodology</div>
         </div>
       </div>
     </div>
@@ -1350,13 +1167,43 @@ db.users.find(
 </footer>
 
 <script>
-function switchTab(tabName, btn) {
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('tab-' + tabName).classList.add('active');
+// SKILL BARS
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.querySelectorAll('.progress-fill').forEach(f => {
+      f.style.width = f.getAttribute('data-width');
+    });
+  }, 400);
+});
+
+// WORKFLOW STEPS
+const workflowData = [];
+function selectStep(index, el) {
+  document.querySelectorAll('.workflow-step').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.workflow-detail-box').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('wf-' + index).classList.add('active');
+}
+
+// PROJECT TOGGLE
+function toggleProject(id, header) {
+  const body = document.getElementById('project-' + id);
+  const icon = header.querySelector('.expand-icon');
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  icon.classList.toggle('open', !isOpen);
+}
+
+// SCOPE TABS (per project)
+function switchScope(panelId, btn) {
+  const container = btn.closest('.project-body');
+  container.querySelectorAll('.scope-panel').forEach(p => p.classList.remove('active'));
+  container.querySelectorAll('.scope-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('scope-' + panelId).classList.add('active');
   btn.classList.add('active');
 }
 
+// BUG TOGGLE
 function toggleBug(header) {
   const body = header.nextElementSibling;
   const icon = header.querySelector('.expand-icon');
@@ -1364,47 +1211,34 @@ function toggleBug(header) {
   icon.classList.toggle('open');
 }
 
-let showingAll = false;
-function toggleShowMore() {
-  const hiddenRows = document.querySelectorAll('.hidden-row');
-  const btn = document.getElementById('show-more-btn');
-  showingAll = !showingAll;
-  hiddenRows.forEach(r => r.style.display = showingAll ? '' : 'none');
-  btn.textContent = showingAll ? '▲ Tampilkan lebih sedikit' : '▼ Tampilkan lebih banyak (5 test case)';
-}
-
-let currentStatus = 'all';
-function filterByStatus(status, btn) {
-  currentStatus = status;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  applyFilters();
-}
-
-function filterTable(search) {
-  applyFilters(search);
-}
-
-function applyFilters(search) {
-  const s = (search !== undefined ? search : document.getElementById('tc-search').value).toLowerCase();
-  const rows = document.querySelectorAll('#tc-body tr');
-  rows.forEach(row => {
-    const text = row.textContent.toLowerCase();
-    const status = row.getAttribute('data-status') || '';
-    const matchSearch = !s || text.includes(s);
-    const matchStatus = currentStatus === 'all' || status === currentStatus;
-    row.style.display = (matchSearch && matchStatus) ? '' : 'none';
+// TABLE FILTER
+function filterTableById(tbodyId, search) {
+  const s = search.toLowerCase();
+  document.querySelectorAll('#' + tbodyId + ' tr').forEach(row => {
+    row.style.display = (!s || row.textContent.toLowerCase().includes(s)) ? '' : 'none';
   });
 }
 
-window.addEventListener('load', () => {
-  const fills = document.querySelectorAll('.progress-fill');
-  setTimeout(() => {
-    fills.forEach(f => {
-      f.style.width = f.getAttribute('data-width');
-    });
-  }, 400);
-});
+const statusFilters = {};
+function filterTableByStatusId(tbodyId, status, btn) {
+  statusFilters[tbodyId] = status;
+  const container = btn.closest('.filter-bar');
+  container.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#' + tbodyId + ' tr').forEach(row => {
+    const s = row.getAttribute('data-status') || '';
+    row.style.display = (status === 'all' || s === status) ? '' : 'none';
+  });
+}
+
+// SHOW MORE TABLE
+const showMoreState = {};
+function toggleShowMoreTable(tbodyId, btn) {
+  showMoreState[tbodyId] = !showMoreState[tbodyId];
+  const on = showMoreState[tbodyId];
+  document.querySelectorAll('#' + tbodyId + ' tr.hidden-row').forEach(r => r.style.display = on ? '' : 'none');
+  btn.textContent = on ? '▲ Tampilkan lebih sedikit' : btn.textContent.replace('▲', '▼').replace('lebih sedikit', btn.dataset.label || 'lebih banyak');
+}
 </script>
 </body>
 </html>
